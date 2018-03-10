@@ -1,6 +1,5 @@
 import store from '../globals';
 
-const globals = store.getState();
 const sprite = [
   {
     name: 'w3',
@@ -119,13 +118,18 @@ const sprite = [
 
 export default class Player {
   constructor() {
+    this.globals = store.getState();
     this.moving = false;
     this.speed = 0;
     this.sprite = sprite;
-    this.direction = globals.player.direction;
+    this.direction = this.globals.player.direction;
     this.position = {
-      x: globals.canvas.width / 2,
+      x: this.globals.canvas.width / 2,
       y: 100
     }
+  }
+
+  update() {
+    this.position.x = this.globals.canvas.width/2;
   }
 }

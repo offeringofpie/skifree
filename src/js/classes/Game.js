@@ -40,7 +40,7 @@ export default class Game {
   resizeCanvas(width = window.innerWidth, height = window.innerHeight) {
     this.globals.canvas.width = width;
     this.globals.canvas.height = height;
-    this.player.position.x = width/2;
+    this.player.update();
     this.obstacles.update();
     this.debug();
   }
