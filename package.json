@@ -1,0 +1,64 @@
+{
+  "name": "skifree",
+  "version": "0.0.1",
+  "description": "skifree made with javascript",
+  "author": "J Lopes <mail@jlopes.eu>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.com:offeringofpie/game-skifree.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run dev:open && npm run dev:webpack",
+    "dev:webpack": "./node_modules/webpack/bin/webpack.js",
+    "dev:open": "open ./build/index.html",
+    "git:clean": "rm -rf .git; git init",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "skifree",
+    "js",
+    "canvas"
+  ],
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "css-loader": "^0.28.7",
+    "css-mqpacker": "^6.0.1",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "optimize-css-assets-webpack-plugin": "^3.2.0",
+    "postcss-cssnext": "^3.0.2",
+    "postcss-import": "^11.0.0",
+    "postcss-loader": "^2.0.8",
+    "redux": "^3.7.2",
+    "redux-devtools": "^3.4.1",
+    "rxjs": "^5.5.5",
+    "style-loader": "^0.19.0",
+    "webpack": "^4.0.0"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ],
+    "plugins": ["babel-plugin-transform-object-rest-spread"]
+  },
+  "postCSS": {
+    "parser": "sugarss",
+    "plugins": {
+      "autoprefixer": {
+        "browsers": [
+          "last 3 versions"
+        ]
+      },
+      "postcss-import": {},
+      "postcss-cssnext": {
+        "browsers": [
+          "last 3 versions"
+        ]
+      },
+      "cssnano": {}
+    }
+  }
+}
