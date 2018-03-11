@@ -131,13 +131,17 @@ export default class Player {
   }
 
   draw() {
-    this.direction = this.globals.player.direction;
     const playerX = this.globals.canvas.width - this.position.x;
     const playerY = this.position.y;
     draw(this.sprite[this.direction],playerX,playerY);
   }
 
   update() {
+    const state = store.getState();
+    if (this.direction !== state.player.direction) {
+      this.direction = state.player.direction;
+    }
+
     this.draw();
   }
 }
