@@ -1,4 +1,5 @@
-import store from '../globals';
+import {globals,store} from '../globals';
+import draw from '../functions/draw';
 
 const sprite = [
   {
@@ -118,18 +119,25 @@ const sprite = [
 
 export default class Player {
   constructor() {
-    this.globals = store.getState();
+    this.globals = globals;
     this.moving = false;
     this.speed = 0;
     this.sprite = sprite;
     this.direction = this.globals.player.direction;
     this.position = {
-      x: this.globals.canvas.width / 2,
+      x: this.globals.canvas.width/2,
       y: 100
     }
   }
 
+  draw() {
+    this.direction = this.globals.player.direction;
+    const playerX = this.globals.canvas.width - this.position.x;
+    const playerY = this.position.y;
+    draw(this.sprite[this.direction],playerX,playerY);
+  }
+
   update() {
-    this.position.x = this.globals.canvas.width/2;
+    this.draw();
   }
 }

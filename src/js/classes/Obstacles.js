@@ -1,10 +1,10 @@
-import store from '../globals';
+import {store} from '../globals';
 import draw from '../functions/draw';
 
 import Tree from '../entities/Tree';
 
 export default class Obstacles {
-  constructor(canvas) {
+  constructor() {
     this.globals = store.getState();
     this.obstacles = [];
     this.tree = new Tree();
@@ -20,20 +20,28 @@ export default class Obstacles {
     this.globals = store.getState();
   }
 
-  add() {
-    this.obstacles.push(new Tree());
+  add(y = 0) {
+    this.obstacles.push(new Tree(y));
   }
 
   draw() {
-    this.obstacles.forEach(obstacle => {
-      let obstacleX = this.globals.canvas.width - obstacle.position.x;
-      let obstacleY = this.globals.canvas.height - obstacle.position.y;
+    this.obstacles.forEach((obstacle,i) => {
+      if (i == 0) {
+        if (obstacle.position.y >= 0) {
+        } else {
+          this.obstacles.splice(i, 1);
+          this.add(this.globals.canvas.height);
+        }
+      }
+      obstacle.position.y -= this.globals.player.speed;
+      const obstacleX = this.globals.canvas.width - obstacle.position.x;
+      const obstacleY = obstacle.position.y;
       draw(obstacle.sprite[0],obstacleX,obstacleY);
     })
   }
 
   update() {
-    this.fetchGlobals();
+    // this.fetchGlobals();
     this.draw();
   }
 }

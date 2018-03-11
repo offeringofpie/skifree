@@ -1,4 +1,4 @@
-import store from '../globals';
+import {store} from '../globals';
 
 const globals = store.getState();
 
