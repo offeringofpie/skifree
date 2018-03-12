@@ -17,10 +17,6 @@ export default class Obstacles {
     }
   }
 
-  fetchGlobals() {
-    this.globals = store.getState();
-  }
-
   add(y = 0) {
     const luckyNumber = Math.random();
 
@@ -35,7 +31,7 @@ export default class Obstacles {
 
   draw() {
     this.obstacles.forEach((obstacle,i) => {
-      if (obstacle.position.y <= 0) {
+      if (obstacle.position.y <= -100) {
         this.obstacles.splice(i, 1);
         this.add(this.globals.canvas.height);
       } else if (obstacle.position.x <= 0){
@@ -43,7 +39,10 @@ export default class Obstacles {
         this.add(obstacle.position.y,this.globals.canvas.width);
       }
 
-      obstacle.position.y -= this.globals.player.speed;
+      const state = store.getState();
+
+      obstacle.position.x -= state.speed.x;
+      obstacle.position.y -= state.speed.y;
       const obstacleX = this.globals.canvas.width - obstacle.position.x;
       const obstacleY = obstacle.position.y;
       draw(obstacle.sprite[0],obstacleX,obstacleY);
@@ -51,7 +50,6 @@ export default class Obstacles {
   }
 
   update() {
-    // this.fetchGlobals();
     this.draw();
   }
 }

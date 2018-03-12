@@ -1,6 +1,7 @@
 import {Subject} from 'rxjs/Subject';
 import {combineReducers, createStore} from 'redux';
 import playerReducer from './reducers/player';
+import speedReducer from './reducers/speed';
 
 const sprite = new Image(512,128);
 sprite.src = './img/player.png';
@@ -12,13 +13,17 @@ let globals = {
   subject: new Subject(),
   sprite: sprite,
   player: {
-    speed: 5,
     direction: 5
+  },
+  speed: {
+    x: 0,
+    y: 5
   }
 }
 
 const reducer = combineReducers({
-  player: playerReducer
+  player: playerReducer,
+  speed: speedReducer
 });
 
 let store = createStore(reducer, globals);
