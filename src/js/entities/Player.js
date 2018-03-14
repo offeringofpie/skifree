@@ -117,7 +117,18 @@ const sprite = [
   }
 ];
 
+/**
+ * Class Player
+ * @constructor
+ * @param {object} globals - represents the global object
+ * @param {boolean} moving - if the player is moving
+ * @param {integer} speed - Player speed
+ * @param {object} sprite - Player sprite
+ * @param {integer} direction - Player sprite position
+ * @param {object} position - Player position in the canvas
+ */
 export default class Player {
+  /* constructor */
   constructor() {
     this.globals = globals;
     this.moving = false;
@@ -130,12 +141,14 @@ export default class Player {
     }
   }
 
+  /* draw */
   draw() {
     const playerX = this.globals.canvas.width - this.position.x;
     const playerY = this.position.y;
     draw(this.sprite[this.direction],playerX,playerY);
   }
 
+  /* update */
   update() {
     const state = store.getState();
     if (this.direction !== state.player.direction) {

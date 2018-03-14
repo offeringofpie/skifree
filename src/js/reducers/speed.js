@@ -7,13 +7,13 @@ export default function(state = {}, action) {
       };
       break;
     case 'PLAYER_MOVE':
-      let speedX = state.x - action.payload;
-      let speedY = Math.min((state.y + action.payload), 5);
+      let speedX = Math.min(Math.max(state.x - action.payload, -5), 5);
+      let speedY = Math.min(Math.max(5 - Math.abs(speedX), 0), 5);
       if (action.payload == 5) {
         speedX = 0;
         speedY = 5;
-      } else if (state.x > 8) {
-        // speedY = 0;
+      } else if (speedY == 2) {
+        speedY = 0;
       }
 
       state = {
