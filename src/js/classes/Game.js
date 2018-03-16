@@ -14,7 +14,7 @@ export default class Game {
     this.fullWidth = window.innerWidth;
     this.fullHeight = window.innerHeight;
     this.player = new Player();
-    this.animate = new Animate(1/60);
+    this.animate = new Animate(1 / 60);
     this.obstacles = new Obstacles();
   }
 
@@ -24,15 +24,38 @@ export default class Game {
       this.resizeCanvas();
     });
 
-    this.player.position.x = this.globals.canvas.width/2;
+    this.player.position.x = this.globals.canvas.width / 2;
 
     this.animate.update = (deltaTime) => {
-      this.redraw(deltaTime);
+      this.fillArea();
+      this.player.update(deltaTime);
+      this.obstacles.update(deltaTime);
+      this.hitTest();
     };
+
     this.animate.start();
     this.obstacles.init();
+    this.hitTest();
     input();
-    // store.dispatch({type: 'UPDATE_SPEED', payload: 9.5});
+  }
+
+  hitTest() {
+    const playerBounds = [
+      {
+        x: this.player.position.x - this.player.sprite[this.player.direction].width,
+        y: this.player.position.y - this.player.sprite[this.player.direction].height
+      }, {
+        x: this.player.position.x,
+        y: this.player.position.y
+      }
+    ];
+    this.obstacles.obstacles.forEach(obstacle => {
+      if ((playerBounds[0].x <= obstacle.position.x && playerBounds[1].x >= obstacle.position.x) || (playerBounds[1].x >= obstacle.position.x && playerBounds[0].x <= obstacle.position.x - obstacle.sprite[0].width)) {
+        if (playerBounds[1].y >= obstacle.position.y && (playerBounds[0].y <= obstacle.position.y - obstacle.sprite[0].height)) {
+          store.dispatch({type: 'PLAYER_HIT', payload: 1});
+        }
+      }
+    });
   }
 
   resizeCanvas(width = window.innerWidth, height = window.innerHeight) {
@@ -46,12 +69,6 @@ export default class Game {
   fillArea(color = 'rgba(255,255,255,1)', x = 0, y = 0, width = window.innerWidth, height = window.innerHeight) {
     this.globals.context.fillStyle = color;
     this.globals.context.fillRect(x, y, width, height);
-  }
-
-  redraw(deltaTime) {
-    this.fillArea();
-    this.player.update(deltaTime);
-    this.obstacles.update(deltaTime);
   }
 
   debug() {

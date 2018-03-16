@@ -22,6 +22,12 @@ export default function(state = {}, action) {
         y: speedY
       };
       break;
+    case 'PLAYER_HIT':
+      state = {...state,
+        x: 0,
+        y: 0
+      };
+      break;
   }
 
   return state;

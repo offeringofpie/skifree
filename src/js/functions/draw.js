@@ -19,7 +19,7 @@ export default function draw(
   );
 
   if (globals.debug) {
-    globals.context.strokeStyle = 'green';
+    globals.context.strokeStyle = sprite.hit ? 'red':'green';
     globals.context.strokeRect(
       canvasX - (sprite.width/2),
       canvasY - (sprite.height/2),

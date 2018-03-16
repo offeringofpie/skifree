@@ -23,6 +23,7 @@ export default class Ramp {
     this.position = {
       x: this.globals.canvas.width*Math.random(),
       y: y ? y : this.globals.canvas.height*Math.random()
-    }
+    };
+    this.hit = 0;
   }
 }

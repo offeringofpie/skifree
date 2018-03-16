@@ -27,6 +27,8 @@ const reducer = combineReducers({
 });
 
 let store = createStore(reducer, globals);
-store.subscribe(() => console.log(store.getState()))
+store.subscribe(() => {
+  // console.log(store.getState())
+});
 
 export {globals, store};

@@ -21,9 +21,12 @@ export default function(state = {}, action) {
       }
       state = {...state, direction: direction};
       break;
-    case 'UPDATE_SPEED':
-      let speed = action.payload ? state.speed + action.payload : action.payload;
-      state = {...state, speed: speed};
+    case 'PLAYER_HIT':
+      state = {
+        ...state,
+        hit: action.payload,
+        direction: 14
+      };
       break;
   }
 

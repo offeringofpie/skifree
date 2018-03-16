@@ -101,7 +101,7 @@ const sprite = [
     height: 128,
     flipped: 1
   }, {
-    name: 'jump',
+    name: 'ouch',
     x: 1008,
     y: 0,
     width: 124,
@@ -138,7 +138,8 @@ export default class Player {
     this.position = {
       x: this.globals.canvas.width/2,
       y: 100
-    }
+    };
+    this.hit = 0;
   }
 
   /* draw */
