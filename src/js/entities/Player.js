@@ -144,9 +144,7 @@ export default class Player {
 
   /* draw */
   draw() {
-    const playerX = this.globals.canvas.width - this.position.x;
-    const playerY = this.position.y;
-    draw(this.sprite[this.direction],playerX,playerY);
+    draw(this.sprite[this.direction],this.position.x,this.position.y);
   }
 
   /* update */

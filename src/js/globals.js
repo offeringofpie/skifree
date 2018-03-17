@@ -7,7 +7,7 @@ const sprite = new Image(512,128);
 sprite.src = './img/player.png';
 
 let globals = {
-  debug: 1,
+  debug: 0,
   canvas: document.querySelector('canvas'),
   context: document.querySelector('canvas').getContext('2d'),
   subject: new Subject(),
