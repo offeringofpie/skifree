@@ -15,7 +15,7 @@
     "dev:open": "open ./build/index.html",
     "git:clean": "rm -rf .git; git init",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "log": "git log --abbrev-commit --date=short --pretty=format:'* [%h](http://github.com/$3/$4/commit/%H): %s (%ad)' > CHANGELOG.md && echo 'CHANGELOG.md udpated'"
+    "log": "git log --abbrev-commit --date=short --pretty=format:'- %s · [%h](http://github.com/$3/$4/commit/%H) · 📅 %ad' > CHANGELOG2.md && echo 'CHANGELOG.md udpated'"
   },
   "keywords": [
     "skifree",

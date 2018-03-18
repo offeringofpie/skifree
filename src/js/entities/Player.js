@@ -144,7 +144,11 @@ export default class Player {
 
   /* draw */
   draw() {
-    draw(this.sprite[this.direction],this.position.x,this.position.y);
+    let posX = this.position.x;
+    if (this.sprite[this.direction].name == 'ouch') {
+      posX = this.position.x + this.sprite[this.direction].width/8;
+    }
+    draw(this.sprite[this.direction],posX,this.position.y);
   }
 
   /* update */

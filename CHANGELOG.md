@@ -1,10 +1,17 @@
-* [e60c91d](http://github.com/$3/$4/commit/e60c91deb32df88befdcd41a34575b57688e7422): hittest v3 (2018-03-17)
-* [58a53de](http://github.com/$3/$4/commit/58a53de1d50a7a8463b5159a24cc53bc202b51bb): hittest v2 (2018-03-16)
-* [09bd6b9](http://github.com/$3/$4/commit/09bd6b98a13e2814beb24917ec373645a45704ca): input controlled horizontal and vertical speed (2018-03-14)
-* [25bbfe1](http://github.com/$3/$4/commit/25bbfe1030c16d37899a0842b031ed1885466940): initial horizontal speed development (2018-03-12)
-* [ae50b65](http://github.com/$3/$4/commit/ae50b656a5da173f27052ab798fc36e63c23f410): added Ramp and Rock (2018-03-11)
-* [13426b7](http://github.com/$3/$4/commit/13426b720310e0ff13f088817de15e7d810d714a): it moves! (2018-03-11)
-* [790862f](http://github.com/$3/$4/commit/790862f8b382cfcf5e6b8e1732601ec4323c8dd2): correct packages (2018-03-10)
-* [6c86dd2](http://github.com/$3/$4/commit/6c86dd25c4044a43cc2a1c3ab6645a8475006d68): added trees (2018-03-10)
-* [c2af162](http://github.com/$3/$4/commit/c2af162855385b49b0eb10049dd0ff72a5650578): build folder (2018-03-10)
-* [cdc63b3](http://github.com/$3/$4/commit/cdc63b3a09970978768814481c7ee2543a5741ad): initial commit (2018-03-10)
+# Changelog
+
+## [Unreleased]
+
+## Commits log
+- simplified CHANGELOG.md · [b88f9ee](http://github.com/$3/$4/commit/b88f9eeda8f66077741ad082e4b3e018c7728ad3) · 📅 2018-03-17
+- hittest v3 · [e60c91d](http://github.com/$3/$4/commit/e60c91deb32df88befdcd41a34575b57688e7422) · 📅 2018-03-17
+- hittest v2 · [58a53de](http://github.com/$3/$4/commit/58a53de1d50a7a8463b5159a24cc53bc202b51bb) · 📅 2018-03-16
+- input controlled horizontal and vertical speed · [09bd6b9](http://github.com/$3/$4/commit/09bd6b98a13e2814beb24917ec373645a45704ca) · 📅 2018-03-14
+- initial horizontal speed development · [25bbfe1](http://github.com/$3/$4/commit/25bbfe1030c16d37899a0842b031ed1885466940) · 📅 2018-03-12
+- added Ramp and Rock · [ae50b65](http://github.com/$3/$4/commit/ae50b656a5da173f27052ab798fc36e63c23f410) · 📅 2018-03-11
+- it moves! · [13426b7](http://github.com/$3/$4/commit/13426b720310e0ff13f088817de15e7d810d714a) · 📅 2018-03-11
+- correct packages · [790862f](http://github.com/$3/$4/commit/790862f8b382cfcf5e6b8e1732601ec4323c8dd2) · 📅 2018-03-10
+- added trees · [6c86dd2](http://github.com/$3/$4/commit/6c86dd25c4044a43cc2a1c3ab6645a8475006d68) · 📅 2018-03-10
+- build folder · [c2af162](http://github.com/$3/$4/commit/c2af162855385b49b0eb10049dd0ff72a5650578) · 📅 2018-03-10
+- initial commit ·
+[cdc63b3](http://github.com/$3/$4/commit/cdc63b3a09970978768814481c7ee2543a5741ad) · 📅 2018-03-102018-03-10
