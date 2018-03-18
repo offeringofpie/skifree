@@ -1,9 +1,10 @@
 # Changelog
 
-## [Unreleased]
-
 ## Commits log
+- ramps are pass-through now · [2bc04d6](http://github.com/$3/$4/commit/2bc04d66f6f8df7ed8640407dbed4305c2899905) · 📅 2018-03-18
+- mouse movement added · [9b46725](http://github.com/$3/$4/commit/9b46725293006bee2384543b83be152dc8f3baee) · 📅 2018-03-18
 - the ouch update · [16fbdff](http://github.com/$3/$4/commit/16fbdffa573446ba3420ea0ecde28c241bb747ea) · 📅 2018-03-18
+- simplified CHANGELOG.md · [b88f9ee](http://github.com/$3/$4/commit/b88f9eeda8f66077741ad082e4b3e018c7728ad3) · 📅 2018-03-17
 - hittest v3 · [e60c91d](http://github.com/$3/$4/commit/e60c91deb32df88befdcd41a34575b57688e7422) · 📅 2018-03-17
 - hittest v2 · [58a53de](http://github.com/$3/$4/commit/58a53de1d50a7a8463b5159a24cc53bc202b51bb) · 📅 2018-03-16
 - input controlled horizontal and vertical speed · [09bd6b9](http://github.com/$3/$4/commit/09bd6b98a13e2814beb24917ec373645a45704ca) · 📅 2018-03-14

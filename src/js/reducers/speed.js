@@ -23,7 +23,6 @@ export default function(state = {}, action) {
       };
       break;
     case 'PLAYER_MOUSEMOVE':
-      console.log(action.payload);
       let mSpeedX = action.payload.x;
       let mSpeedY = action.payload.y ? Math.min(Math.max(5 - Math.abs(mSpeedX), 0), 5) : 0;
       state = {

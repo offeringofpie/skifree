@@ -23,10 +23,10 @@
     "canvas"
   ],
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
+    "@babel/core": "^7.0.0-beta.42",
+    "@babel/plugin-transform-spread": "^7.0.0-beta.42",
+    "@babel/preset-env": "^7.0.0-beta.42",
+    "babel-loader": "^8.0.0-beta.2",
     "css-loader": "^0.28.7",
     "css-mqpacker": "^6.0.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
@@ -42,10 +42,13 @@
   },
   "babel": {
     "presets": [
-      "env"
+      [
+        "@babel/preset-env",
+        {"shippedProposals": true}
+      ]
     ],
     "plugins": [
-      "babel-plugin-transform-object-rest-spread"
+      "@babel/plugin-transform-spread"
     ]
   },
   "postCSS": {

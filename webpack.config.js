@@ -1,9 +1,9 @@
-import path from 'path';
-import webpack from 'webpack';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+const path = require('path');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
-export default {
+module.exports = {
   mode: 'production',
   entry: ['./src/main.js'],
   output: {
@@ -17,7 +17,7 @@ export default {
     rules: [
       {
         test: /\.js$/,
-        use: 'babel-loader',
+        loader: 'babel-loader',
         exclude: '/node_modules/'
       }, {
         test: /\.css$/,
