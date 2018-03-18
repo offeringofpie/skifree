@@ -33,7 +33,11 @@ export default function(state = {}, action) {
       }
 
       if (action.payload.y == 0) {
-        mDirection = (action.payload.x > 0) ? 2 : 8;
+        if (action.payload.x == 0) {
+          mDirection = 5;
+        } else {
+          mDirection = (action.payload.x > 0) ? 2 : 8;
+        }
       }
 
       state = {...state, direction: mDirection};

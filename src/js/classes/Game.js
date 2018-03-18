@@ -1,11 +1,11 @@
+import {Observable, Subject} from "rxjs/Observable";
+import 'rxjs/add/observable/fromEvent';
 import {globals,store} from '../globals';
 import draw from '../functions/draw';
 import input from '../functions/keymap';
-import {Observable, Subject} from "rxjs/Observable";
 import Player from '../entities/Player';
 import Animate from './Animate';
 import Obstacles from './Obstacles';
-import 'rxjs/add/observable/fromEvent';
 
 export default class Game {
   constructor() {
@@ -42,9 +42,6 @@ export default class Game {
   }
 
   hitTest() {
-
-    // posX - (sprite.width/2), poxY - (sprite.height/2),
-    // sprite.width/3, sprite.height/3
     const playerBounds = [
       {
         x: this.player.position.x - this.player.sprite[this.player.direction].width/2,
@@ -66,7 +63,9 @@ export default class Game {
       ];
       if ((playerBounds[0].x <= obstaclePos[0].x && playerBounds[1].x >= obstaclePos[0].x) || (playerBounds[1].x >= obstaclePos[0].x && playerBounds[0].x <= obstaclePos[1].x)) {
         if (playerBounds[0].y <= obstaclePos[0].y && (playerBounds[1].y >= obstaclePos[0].y) || (playerBounds[1].y >= obstaclePos[0].y && playerBounds[0].y <= obstaclePos[1].y)) {
-          store.dispatch({type: 'PLAYER_HIT', payload: 1});
+          if (obstacle.sprite[0].name !== 'ramp') {
+            store.dispatch({type: 'PLAYER_HIT', payload: 1});
+          }
         }
       }
     });

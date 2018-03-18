@@ -24,7 +24,7 @@ export default function() {
   window.addEventListener('mousemove', ev => {
     let speed = {
       x: 0,
-      y: 5
+      y: 0
     }
     switch(true) {
       case (ev.clientX >= globals.canvas.width/2-100 && ev.clientX <= globals.canvas.width/2+100 ): speed.x = 0; break;
@@ -36,9 +36,10 @@ export default function() {
     }
 
     switch(true) {
-      case (ev.clientY <= 100 && ev.clientY >= 0 && speed.x !== 0): speed.y = 0; break;
+      case (ev.clientY <= 100 && ev.clientY >= 0): speed.y = 0; break;
+      case (ev.clientY <= globals.canvas.height*2/4 && ev.clientY >= globals.canvas.height/4): speed.y = 3; break;
       case (ev.clientY <= globals.canvas.height*3/4 && speed.x !== 0): speed.y = 4; break;
-      default: speed.y = 5;
+      default: speed.y = 5; break;
     }
     store.dispatch({type: 'PLAYER_MOUSEMOVE', payload: speed});
   });

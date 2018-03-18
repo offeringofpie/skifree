@@ -2,7 +2,7 @@ import {store} from '../globals';
 
 const sprite = [
   {
-    name: 'tree',
+    name: 'ramp',
     x: 1141,
     y: 228,
     width: 127,
