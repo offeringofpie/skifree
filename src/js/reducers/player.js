@@ -21,6 +21,23 @@ export default function(state = {}, action) {
       }
       state = {...state, direction: direction};
       break;
+    case 'PLAYER_MOUSEMOVE':
+      let mDirection = 5;
+
+      switch (true) {
+        case (action.payload.x == 3): mDirection = 3; break;
+        case (action.payload.x == 2): mDirection = 4; break;
+        case (action.payload.x == -2): mDirection = 6; break;
+        case (action.payload.x == -3): mDirection = 7; break;
+        default: mDirection = 5;
+      }
+
+      if (action.payload.y == 0) {
+        mDirection = (action.payload.x > 0) ? 2 : 8;
+      }
+
+      state = {...state, direction: mDirection};
+      break;
     case 'PLAYER_HIT':
       state = {
         ...state,
