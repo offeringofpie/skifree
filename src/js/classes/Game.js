@@ -3,6 +3,7 @@ import 'rxjs/add/observable/fromEvent';
 import {globals,store} from '../globals';
 import draw from '../functions/draw';
 import input from '../functions/keymap';
+import hitTest from '../functions/hitTest';
 import Player from '../entities/Player';
 import Animate from './Animate';
 import Obstacles from './Obstacles';
@@ -42,32 +43,8 @@ export default class Game {
   }
 
   hitTest() {
-    const playerBounds = [
-      {
-        x: this.player.position.x - this.player.sprite[this.player.direction].width/2,
-        y: this.player.position.y - this.player.sprite[this.player.direction].height/2
-      }, {
-        x: this.player.position.x - this.player.sprite[this.player.direction].width/2 + this.player.sprite[this.player.direction].width/3,
-        y: this.player.position.y - this.player.sprite[this.player.direction].height/2 + this.player.sprite[this.player.direction].height/3
-      }
-    ];
     this.obstacles.obstacles.forEach(obstacle => {
-      let obstaclePos = [
-        {
-          x: globals.canvas.width - obstacle.position.x - obstacle.sprite[0].width/2,
-          y: obstacle.position.y - obstacle.sprite[0].height/2
-        }, {
-          x: globals.canvas.width - obstacle.position.x - obstacle.sprite[0].width/2 + obstacle.sprite[0].width/3,
-          y: obstacle.position.y - obstacle.sprite[0].height/2 + obstacle.sprite[0].height/3,
-        }
-      ];
-      if ((playerBounds[0].x <= obstaclePos[0].x && playerBounds[1].x >= obstaclePos[0].x) || (playerBounds[1].x >= obstaclePos[0].x && playerBounds[0].x <= obstaclePos[1].x)) {
-        if (playerBounds[0].y <= obstaclePos[0].y && (playerBounds[1].y >= obstaclePos[0].y) || (playerBounds[1].y >= obstaclePos[0].y && playerBounds[0].y <= obstaclePos[1].y)) {
-          if (obstacle.sprite[0].name !== 'ramp') {
-            store.dispatch({type: 'PLAYER_HIT', payload: 1});
-          }
-        }
-      }
+      hitTest(this.player, obstacle);
     });
   }
 

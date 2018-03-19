@@ -3,7 +3,7 @@ import {combineReducers, createStore} from 'redux';
 import playerReducer from './reducers/player';
 import speedReducer from './reducers/speed';
 
-const sprite = new Image(512,128);
+const sprite = new Image(512,156);
 sprite.src = './img/player.png';
 
 let globals = {
