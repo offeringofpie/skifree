@@ -1,7 +1,7 @@
 export default function(state = {}, action) {
   switch (action.type) {
     case 'GAME_START':
-      state = {...state, started: action.payload};
+      state = {...state, direction: 5};
       break;
     case 'GAME_OVER':
       state = {...state, ended: action.payload};

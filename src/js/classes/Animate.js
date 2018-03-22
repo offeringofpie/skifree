@@ -25,6 +25,10 @@ export default class Animate {
     requestAnimationFrame(this.updateProxy);
   }
 
+  stop() {
+    cancelAnimationFrame(this.updateProxy);
+  }
+
   start() {
     this.queue();
   }

@@ -1,9 +1,9 @@
 export default function(state = {}, action) {
   switch (action.type) {
     case 'GAME_START':
-      state = {
-        ...state,
-        started: action.payload
+      state = {...state,
+        x: 0,
+        y: 5
       };
       break;
     case 'PLAYER_MOVE':

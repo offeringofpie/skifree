@@ -13,7 +13,7 @@ const keys = {
   }
 }
 
-export default function() {
+export default function(game) {
   window.addEventListener('keydown', ev => {
     const code = ev.code;
     if (keys.hasOwnProperty(code)) {
@@ -41,6 +41,19 @@ export default function() {
       case (ev.clientY <= globals.canvas.height*3/4 && speed.x !== 0): speed.y = 4; break;
       default: speed.y = 5; break;
     }
-    store.dispatch({type: 'PLAYER_MOUSEMOVE', payload: speed});
+
+    if (store.getState().game.started && !store.getState().game.over) {
+      store.dispatch({type: 'PLAYER_MOUSEMOVE', payload: speed});
+    }
+  });
+
+  window.addEventListener('click', ev => {
+    if (!store.getState().game.started) {
+      store.dispatch({type: 'GAME_START', payload: 1});
+    } else {
+      if (store.getState().game.over) {
+        game.restart();
+      }
+    }
   });
 }

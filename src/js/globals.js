@@ -2,6 +2,7 @@ import {Subject} from 'rxjs/Subject';
 import {combineReducers, createStore} from 'redux';
 import playerReducer from './reducers/player';
 import speedReducer from './reducers/speed';
+import gameReducer from './reducers/game';
 
 const sprite = new Image(512,156);
 sprite.src = './img/player.png';
@@ -12,17 +13,24 @@ let globals = {
   context: document.querySelector('canvas').getContext('2d'),
   subject: new Subject(),
   sprite: sprite,
+  game: {
+    started: 0,
+    over: 0,
+    distance: 0,
+    speed: 0
+  },
   player: {
     direction: 5
   },
   speed: {
     x: 0,
-    y: 5
+    y: 0.000000000000000001
   }
 }
 
 const reducer = combineReducers({
   player: playerReducer,
+  game: gameReducer,
   speed: speedReducer
 });
 

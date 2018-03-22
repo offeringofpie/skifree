@@ -14,7 +14,8 @@ export default class Obstacles {
   }
 
   init() {
-    for (let o = 0; o<15; o++) {
+    const quantity = (globals.canvas.width > 800) ? 20 : 10;
+    for (let o = 0; o<quantity; o++) {
       this.add();
     }
   }
@@ -35,6 +36,10 @@ export default class Obstacles {
     } else {
       this.obstacles.push(new Ramp(y));
     }
+  }
+
+  clear() {
+    this.obstacles = [];
   }
 
   draw() {
