@@ -160,4 +160,9 @@ export default class Player {
 
     this.draw();
   }
+
+  reset() {
+    this.direction = 5;
+    this.draw();
+  }
 }

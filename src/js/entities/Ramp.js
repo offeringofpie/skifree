@@ -22,7 +22,7 @@ export default class Ramp {
     this.direction = 0;
     this.position = {
       x: this.globals.canvas.width*Math.random(),
-      y: y ? y : this.globals.canvas.height*Math.random()
+      y: y ? y : Math.max(200, this.globals.canvas.height*Math.random()) // setting default position below the player sprite
     };
     this.hit = 0;
   }
