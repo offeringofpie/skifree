@@ -17,12 +17,8 @@ export default class Animate {
 
       lastTime = time;
 
-      this.queue();
+      this.start();
     }
-  }
-
-  queue() {
-    requestAnimationFrame(this.updateProxy);
   }
 
   stop() {
@@ -30,6 +26,6 @@ export default class Animate {
   }
 
   start() {
-    this.queue();
+    requestAnimationFrame(this.updateProxy);
   }
 }

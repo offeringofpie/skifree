@@ -24,14 +24,18 @@ export default class Game {
     Observable.fromEvent(window, 'resize').subscribe(e => {
       this.resizeCanvas();
     });
+    input(this);
+    this.start();
+  }
 
+  start() {
     this.player.position.x = globals.canvas.width / 2;
 
     this.animate.update = (deltaTime) => {
       if (this.store.speed.y !== 0) {
         this.fillArea();
-        this.player.update(deltaTime);
         this.obstacles.update(deltaTime);
+        this.player.update(deltaTime);
         this.hitTest();
       }
     };
@@ -39,7 +43,6 @@ export default class Game {
     this.animate.start();
     this.obstacles.init();
     this.hitTest();
-    input(this);
   }
 
   restart() {
@@ -47,7 +50,7 @@ export default class Game {
     this.obstacles.clear();
     this.player.reset();
     this.fillArea();
-    this.init();
+    this.start();
     store.dispatch({type: 'GAME_START', payload: 1});
   }
 

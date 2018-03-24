@@ -21,6 +21,7 @@ export default class Obstacles {
   }
 
   add(y = 0) {
+    console.log('generating');
     const luckyNumber = Math.random();
 
     if (luckyNumber>0.66) {
@@ -51,6 +52,7 @@ export default class Obstacles {
         this.obstacles.splice(i, 1);
         this.add(obstacle.position.y,globals.canvas.width);
       }
+
 
       const state = store.getState();
 
