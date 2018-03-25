@@ -1,27 +1,40 @@
-# canvas-boiletplate
-Simple canvas playground boilerplate
+# Skifree
+Skifree clone built in Javascript
+
+[![And from that day on, I wore this little 'F' key pendant everywhere I went.](https://imgs.xkcd.com/comics/skifree.png)](https://xkcd.com/667/)
+
 
 # TODO
-* ~~canvas setup~~
+1. [sprites](#sprites)
+2. [movement](#movement)
+3. [collision](#collision)
+4. [ui](#ui)
+5. [other](#other)
 
 ## sprites
-* ~~player placement~~
-* ~~obstacle placement~~
+* [x] player placement
+* [x] obstacle placement
 
 ## movement
-* ~~fps throttle~~
-* ~~keyboard control~~
-* ~~mouse control~~
-* ~~smoother speed control~~
+* [x] fps throttle
+* [x] keyboard control
+* [x] mouse control
+* [x] smoother speed control
+* [ ] Press 'F' to pay respects to the monster
 
 ## collision
-* ~~hit test~~
-* ~~crash state~~
-* ~~game reset~~
+* [x] hit test
+* [x] crash state
+* [x] game reset
+
+## UI
+* [ ] scoreboard
+* [ ] Game Over Messages
+* [ ] Start Button
 
 ## other
-* scoreboard
-* jumping
-  * flipping
-* yeti
-* extra (rare) obstacles
+* [ ] canvas setup
+* [ ] jumping
+  * [ ] flipping
+* [ ] yeti
+* [ ] extra (rare) obstacles
