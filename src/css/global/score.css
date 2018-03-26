@@ -1,0 +1,9 @@
+.score {
+  background-color: var(--color-light);
+  box-shadow: 0 8px 20px -8px var(--color-dark-clear);
+  color: var(--color-dark);
+  padding: 10px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
