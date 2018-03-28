@@ -21,7 +21,6 @@ export default class Obstacles {
   }
 
   add(y = 0) {
-    console.log('generating');
     const luckyNumber = Math.random();
 
     if (luckyNumber>0.66) {
