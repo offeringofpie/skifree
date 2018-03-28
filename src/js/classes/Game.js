@@ -32,11 +32,14 @@ export default class Game {
     this.player.position.x = globals.canvas.width / 2;
 
     this.animate.update = (deltaTime) => {
-      if (this.store.speed.y !== 0) {
-        this.fillArea();
-        this.obstacles.update(deltaTime);
-        this.player.update(deltaTime);
-        this.hitTest();
+      this.fillArea();
+      this.obstacles.update(deltaTime);
+      this.player.update(deltaTime);
+      this.hitTest();
+      this.store = store.getState();
+
+      if (this.store.game.started && !this.store.game.over) {
+        store.dispatch({type: 'UPDATE_DISTANCE', payload: this.store.game.distance+this.store.speed.y/10});
       }
     };
 
@@ -52,6 +55,7 @@ export default class Game {
     this.fillArea();
     this.start();
     store.dispatch({type: 'GAME_START', payload: 1});
+    store.dispatch({type: 'UPDATE_DISTANCE', payload: 0});
   }
 
   hitTest() {

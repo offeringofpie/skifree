@@ -7,6 +7,13 @@ export default function(state = {}, action) {
         over: 0
       };
       break;
+    case 'UPDATE_DISTANCE':
+    console.log(action.payload)
+      state = {
+        ...state,
+        distance: action.payload
+      }
+      break;
     case 'PLAYER_HIT':
       state = {...state,
         over: action.payload
