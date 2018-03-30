@@ -53,11 +53,13 @@ export default function(game) {
   });
 
   window.addEventListener('click', ev => {
-    if (!store.getState().game.started) {
-      store.dispatch({type: 'GAME_START', payload: 1});
-    } else {
-      if (store.getState().game.over) {
-        game.restart();
+    if (!ev.button) {
+      if (!store.getState().game.started) {
+        store.dispatch({type: 'GAME_START', payload: 1});
+      } else {
+        if (store.getState().game.over) {
+          game.restart();
+        }
       }
     }
   });
