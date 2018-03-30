@@ -39,6 +39,7 @@ export default class Game {
       this.store = store.getState();
 
       if (this.store.game.started && !this.store.game.over) {
+        store.dispatch({type: 'UPDATE_ELAPSED', payload: this.store.game.elapsed+(0.015)});
         store.dispatch({type: 'UPDATE_DISTANCE', payload: this.store.game.distance+this.store.speed.y/10});
       }
     };
@@ -55,6 +56,7 @@ export default class Game {
     this.fillArea();
     this.start();
     store.dispatch({type: 'GAME_START', payload: 1});
+    store.dispatch({type: 'UPDATE_ELAPSED', payload: 0});
     store.dispatch({type: 'UPDATE_DISTANCE', payload: 0});
   }
 

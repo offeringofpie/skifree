@@ -9,12 +9,14 @@ export default class Scoreboard extends Component {
     super(props);
 
     this.state = {
+      started: 0,
       speed: 0,
       distance: 0
     };
 
     store.subscribe(() => {
       this.setState({
+        elapsed: store.getState().game.elapsed,
         speed: store.getState().speed.y,
         distance: parseInt(store.getState().game.distance)
       });
@@ -23,7 +25,7 @@ export default class Scoreboard extends Component {
 
   render(props, store) {
     return <div className='score'>
-      Time: 00:00:00<br/>
+      Time: {Math.floor(this.state.elapsed)}s<br/>
       Dist: {this.state.distance}m<br/>
       Speed: {this.state.speed}m/s<br/>
       Style: 0<br/>

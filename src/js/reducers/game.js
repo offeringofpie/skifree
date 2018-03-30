@@ -8,10 +8,15 @@ export default function(state = {}, action) {
       };
       break;
     case 'UPDATE_DISTANCE':
-    console.log(action.payload)
       state = {
         ...state,
         distance: action.payload
+      }
+      break;
+    case 'UPDATE_ELAPSED':
+      state = {
+        ...state,
+        elapsed: action.payload
       }
       break;
     case 'PLAYER_HIT':

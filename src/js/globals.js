@@ -15,6 +15,7 @@ let globals = {
   sprite: sprite,
   game: {
     started: 0,
+    elapsed: 0,
     over: 0,
     distance: 0,
     speed: 0
