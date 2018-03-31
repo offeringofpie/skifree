@@ -3,12 +3,18 @@ import {globals, store} from '../globals';
 
 const keys = {
   ArrowRight: (ev) => {
-    store.dispatch({type: 'PLAYER_MOVE', payload: 1});
-  },
+    if (store.getState().game.started) {
+store.dispatch({type: 'PLAYER_MOVE', payload: 1});
+}  },
   ArrowLeft: (ev) => {
+    if (store.getState().game.started) {
     store.dispatch({type: 'PLAYER_MOVE', payload: -1});
+  }
   },
   ArrowDown: (ev) => {
+    if (!store.getState().game.started) {
+      store.dispatch({type: 'GAME_START', payload: 1});
+    }
     store.dispatch({type: 'PLAYER_MOVE', payload: 5});
   }
 }
@@ -16,7 +22,7 @@ const keys = {
 export default function(game) {
   window.addEventListener('keydown', ev => {
     const code = ev.code;
-    if (keys.hasOwnProperty(code) && store.getState().game.started && !store.getState().game.over) {
+    if (keys.hasOwnProperty(code) && !store.getState().game.over) {
         keys[code]();
       }
     }
@@ -28,15 +34,6 @@ export default function(game) {
       y: 0,
       ratio: 5
     }
-
-    // switch(true) {
-    // //   case (ev.clientX >= globals.canvas.width/2-100 && ev.clientX <= globals.canvas.width/2+100 ): speed.x = 0; break;
-    // //   case (ev.clientX <= globals.canvas.width/4): speed.x = 3; break;
-    // //   case (ev.clientX < globals.canvas.width/2): speed.x = 2; break;
-    // //   case (ev.clientX >= globals.canvas.width*3/4): speed.x = -3; break;
-    // //   case (ev.clientX >= globals.canvas.width/2): speed.x = -2; break;
-    // //   default: speed.x = 0; break;
-    // // }
 
     speed.x = (ev.clientX >= globals.canvas.width/2-100 && ev.clientX <= globals.canvas.width/2+100 )
       ? 0
