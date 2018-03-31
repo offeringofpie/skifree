@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const NotifierPlugin = require('webpack-notifier');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
@@ -38,6 +39,12 @@ module.exports = {
     ]
   },
   plugins: [
+    new NotifierPlugin({
+      title: 'Skifree',
+      contentImage: path.join(__dirname, 'build/img/logo.png'),
+      alwaysNotify: true,
+      skipFirstNotification: true
+    }),
     new ExtractTextPlugin('style.min.css'),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.min\.css$/g,
