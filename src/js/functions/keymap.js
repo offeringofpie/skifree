@@ -29,16 +29,18 @@ export default function(game) {
       ratio: 5
     }
 
-    switch(true) {
-      case (ev.clientX >= globals.canvas.width/2-100 && ev.clientX <= globals.canvas.width/2+100 ): speed.x = 0; speed.x = 0; break;
-      case (ev.clientX <= globals.canvas.width/4): speed.x = 3; break;
-      case (ev.clientX < globals.canvas.width/2): speed.x = 2; break;
-      case (ev.clientX >= globals.canvas.width*3/4): speed.x = -3; break;
-      case (ev.clientX >= globals.canvas.width/2): speed.x = -2; break;
-      default: speed.x = 0; break;
-    }
+    // switch(true) {
+    // //   case (ev.clientX >= globals.canvas.width/2-100 && ev.clientX <= globals.canvas.width/2+100 ): speed.x = 0; break;
+    // //   case (ev.clientX <= globals.canvas.width/4): speed.x = 3; break;
+    // //   case (ev.clientX < globals.canvas.width/2): speed.x = 2; break;
+    // //   case (ev.clientX >= globals.canvas.width*3/4): speed.x = -3; break;
+    // //   case (ev.clientX >= globals.canvas.width/2): speed.x = -2; break;
+    // //   default: speed.x = 0; break;
+    // // }
 
-    speed.x = -Math.sin(((ev.clientX-globals.canvas.width/2)/globals.canvas.width*100)*Math.PI/180)*speed.ratio;
+    speed.x = (ev.clientX >= globals.canvas.width/2-100 && ev.clientX <= globals.canvas.width/2+100 )
+      ? 0
+      : -Math.sin(((ev.clientX-globals.canvas.width/2)/globals.canvas.width*100)*Math.PI/180)*speed.ratio;
     speed.y = Math.floor(Math.abs(Math.cos(speed.x/4)*speed.ratio));
 
     switch(true) {
