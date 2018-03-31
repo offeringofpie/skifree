@@ -24,14 +24,18 @@ export default function(state = {}, action) {
     case 'PLAYER_MOUSEMOVE':
       let mDirection = 5;
 
-      switch (true) {
-        case (action.payload.x == 3): mDirection = 3; break;
-        case (action.payload.x == 2): mDirection = 4; break;
-        case (action.payload.x == -2): mDirection = 6; break;
-        case (action.payload.x == -3): mDirection = 7; break;
-        default: mDirection = 5;
+      if (action.payload.x >= 1) {
+        mDirection = 4;
+        if (action.payload.x >= 2) {
+          mDirection = 3;
+        }
+      } else if (action.payload.x <= -1) {
+        mDirection = 6;
+        if (action.payload.x <= -2) {
+          mDirection = 7;
+        }
       }
-
+      
       if (action.payload.y == 0) {
         if (action.payload.x == 0) {
           mDirection = 5;
