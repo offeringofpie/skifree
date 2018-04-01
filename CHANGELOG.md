@@ -1,6 +1,20 @@
 # Changelog
 
 ## Commits log
+- Press 'F' to pay respects to Yeti · [e6604b5](http://github.com///commit/e6604b51305bef7a6a04305680c4c6896d405c23) · 📅 2018-04-02
+- added webpack-cli updated commands · [2a0668c](http://github.com///commit/2a0668ca60ebd9a0d24135e1a5c37fb71bbde0cb) · 📅 2018-04-02
+- initial animation on player class (getup after ouch) · [2880714](http://github.com///commit/288071494672f3343a5193d50d8c35fea7e60850) · 📅 2018-04-01
+- cleanup ui output · [cbe843f](http://github.com///commit/cbe843f7c7276e1b0fd9b9d636f0a3295ea28369) · 📅 2018-03-31
+- fixed mouseX logic · [b48e63b](http://github.com///commit/b48e63be8c5d16f067ed85d10f97ec6b7fe09e48) · 📅 2018-03-31
+- fixed trigonometry · [73e0e3c](http://github.com///commit/73e0e3c3ddee1a9fa0565e94039c38815b9554e7) · 📅 2018-03-31
+- added webpack-notifier · [164798b](http://github.com///commit/164798b98499181b369fda645f9e393fdfef0071) · 📅 2018-03-31
+- disable right click · [5a39f5b](http://github.com///commit/5a39f5b78480ca076cb33eaa091f82e07f5a01b1) · 📅 2018-03-31
+- initial timer update · [ae45375](http://github.com///commit/ae4537578d71ec945596e9c7321ea7f699039283) · 📅 2018-03-31
+- initial store connection with redux · [a22620c](http://github.com///commit/a22620c44b24677073ff47d8a123118bb6d88c57) · 📅 2018-03-28
+- removed comment box · [0a8cb06](http://github.com///commit/0a8cb06775bad62c69d77931b391e2e34e0681ad) · 📅 2018-03-28
+- added preact redux · [bad462b](http://github.com///commit/bad462b7b91588274200c718807bd5b80593c9dc) · 📅 2018-03-28
+- initial scoreboard implementation · [d215d8e](http://github.com///commit/d215d8e86f8b0c038b0b2c6036ab1f7e958786ad) · 📅 2018-03-26
+- initial preact implementation · [1d50b2b](http://github.com///commit/1d50b2b10c78d87c1ffc590763d4a7dad1852a5d) · 📅 2018-03-26
 - small adjustment in speed adjustment · [7297867](http://github.com/$3/$4/commit/72978672bcd5647b42d48d234a1dfdffeb3a08be) · 📅 2018-03-24
 - game over && game start · [46aabae](http://github.com/$3/$4/commit/46aabae9da2acb77ed3b4a40eed3be7157ea4269) · 📅 2018-03-22
 - limit initial y position · [7023bf8](http://github.com/$3/$4/commit/7023bf84d4b747e6d3de2a4d3c5a7c572f08b5da) · 📅 2018-03-22

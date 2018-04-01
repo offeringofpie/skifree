@@ -20,7 +20,9 @@ Skifree clone built in Javascript
 * [x] keyboard control
 * [x] mouse control
 * [x] smoother speed control
-* [ ] Press 'F' to pay respects to the monster
+* [x] Press 'F' to pay respects to the monster
+* [ ] jumping
+  * [ ] flipping
 
 ## collision
 * [x] hit test
@@ -33,8 +35,6 @@ Skifree clone built in Javascript
 * [ ] Start Button
 
 ## other
-* [ ] canvas setup
-* [ ] jumping
-  * [ ] flipping
+* [x] canvas setup
 * [ ] yeti
 * [ ] extra (rare) obstacles
