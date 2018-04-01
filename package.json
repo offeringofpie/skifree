@@ -11,11 +11,9 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run dev:open && npm run dev:webpack",
-    "dev:webpack": "./node_modules/webpack/bin/webpack.js",
-    "dev:open": "open ./build/index.html",
-    "git:clean": "rm -rf .git; git init",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "log": "git log --abbrev-commit --date=short --pretty=format:'- %s · [%h](http://github.com/$3/$4/commit/%H) · 📅 %ad' > CHANGELOG2.md && echo 'CHANGELOG.md udpated'"
+    "dev": "./node_modules/webpack/bin/webpack.js --mode development",
+    "build": "./node_modules/webpack/bin/webpack.js --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "skifree",
@@ -42,6 +40,7 @@
     "rxjs": "^5.5.5",
     "style-loader": "^0.19.0",
     "webpack": "^4.2.0",
+    "webpack-cli": "^2.0.13",
     "webpack-notifier": "^1.6.0"
   },
   "babel": {
