@@ -32,12 +32,10 @@ export default function(game) {
     let speed = {
       x: 0,
       y: 0,
-      ratio: 5
+      ratio: 8
     }
 
-    speed.x = (ev.clientX >= globals.canvas.width/2-100 && ev.clientX <= globals.canvas.width/2+100 )
-      ? 0
-      : -Math.sin(((ev.clientX-globals.canvas.width/2)/globals.canvas.width*100)*Math.PI/180)*speed.ratio;
+    speed.x = -Math.sin(((ev.clientX-globals.canvas.width/2)/globals.canvas.width*100)*Math.PI/180)*speed.ratio;
     speed.y = Math.floor(Math.abs(Math.cos(speed.x/4)*speed.ratio));
 
     switch(true) {

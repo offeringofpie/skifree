@@ -1,7 +1,7 @@
 export default function(state = {}, action) {
   switch (action.type) {
     case 'GAME_START':
-      state = {...state, direction: 5};
+      state = {...state, direction: 5, hit: 0};
       break;
     case 'GAME_OVER':
       state = {...state, ended: action.payload};
@@ -35,7 +35,7 @@ export default function(state = {}, action) {
           mDirection = 7;
         }
       }
-      
+
       if (action.payload.y == 0) {
         if (action.payload.x == 0) {
           mDirection = 5;
@@ -53,7 +53,13 @@ export default function(state = {}, action) {
         direction: 14
       };
       break;
-  }
+    case 'PLAYER_SPRITE':
+      state = {
+        ...state,
+        direction: action.payload
+      };
+      break;
+    }
 
   return state;
 }

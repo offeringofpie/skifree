@@ -140,28 +140,37 @@ export default class Player {
       y: 100
     };
     this.hit = 0;
+    this.buffer = 0;
   }
 
   /* draw */
   draw() {
     let posX = this.position.x;
-    if (this.sprite[this.direction].name == 'ouch') {
+    if (this.sprite[this.direction].name.match(/ouch|getup/)) {
       posX = this.position.x + this.sprite[this.direction].width/8;
     }
     draw(this.sprite[this.direction],posX,this.position.y);
   }
 
   /* update */
-  update() {
+  update(deltaTime) {
     const state = store.getState();
-    if (this.direction !== state.player.direction) {
-      this.direction = state.player.direction;
-    }
+    if (state.player.hit) {
+      this.hit = state.player.hit;
+      this.buffer++;
 
+      if (this.buffer >= 90) {
+        store.dispatch({type: 'PLAYER_SPRITE', payload: 15});
+        // this.direction = 15;
+        this.buffer = 0;
+      }
+    }
+    this.direction = state.player.direction;
     this.draw();
   }
 
   reset() {
+    this.hit = 0;
     this.direction = 5;
     this.draw();
   }

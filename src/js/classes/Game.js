@@ -30,6 +30,7 @@ export default class Game {
 
   start() {
     this.player.position.x = globals.canvas.width / 2;
+    store.dispatch({type: 'UPDATE_ELAPSED', payload: 0});
 
     this.animate.update = (deltaTime) => {
       this.fillArea();

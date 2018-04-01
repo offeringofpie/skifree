@@ -24,7 +24,7 @@ export default function hitTest(player, obstacle) {
 
   if ((playerBounds[0].x <= obstaclePos[0].x && playerBounds[1].x >= obstaclePos[0].x) || (playerBounds[1].x >= obstaclePos[0].x && playerBounds[0].x <= obstaclePos[1].x)) {
     if (playerBounds[0].y <= obstaclePos[0].y && (playerBounds[1].y >= obstaclePos[0].y) || (playerBounds[1].y >= obstaclePos[0].y && playerBounds[0].y <= obstaclePos[1].y)) {
-      if (obstacle.sprite[0].name != 'ramp' && obstacle.sprite[0].name != 'snow') {
+      if (obstacle.sprite[0].name != 'ramp' && obstacle.sprite[0].name != 'snow' && !player.hit) {
         store.dispatch({type: 'PLAYER_HIT', payload: 1});
       }
     }
