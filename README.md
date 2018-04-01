@@ -31,6 +31,10 @@ Skifree clone built in Javascript
 
 ## UI
 * [ ] scoreboard
+  - [x] Timer
+  - [x] speed
+  - [x] Distance
+  - [ ] Style
 * [ ] Game Over Messages
 * [ ] Start Button
 
