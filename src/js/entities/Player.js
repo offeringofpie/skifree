@@ -161,7 +161,6 @@ export default class Player {
 
       if (this.buffer >= 90) {
         store.dispatch({type: 'PLAYER_SPRITE', payload: 15});
-        // this.direction = 15;
         this.buffer = 0;
       }
     }

@@ -26,7 +26,8 @@ let globals = {
   },
   speed: {
     x: 0,
-    y: 0
+    y: 0,
+    ratio: 8
   }
 }
 

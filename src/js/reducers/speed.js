@@ -3,15 +3,16 @@ export default function(state = {}, action) {
     case 'GAME_START':
       state = {...state,
         x: 0,
-        y: 8
+        y: 8,
+        ratio: 8
       };
       break;
     case 'PLAYER_MOVE':
-      let speedX = Math.min(Math.max(state.x - action.payload, -8), 8);
-      let speedY = Math.min(Math.max(5 - Math.abs(speedX), 0), 8);
+      let speedX = Math.min(Math.max(state.x - action.payload, -state.ratio), state.ratio);
+      let speedY = Math.min(Math.max(state.ratio - Math.abs(speedX), 0), state.ratio);
       if (action.payload == 5) {
         speedX = 0;
-        speedY = 8;
+        speedY = state.ratio;
       } else if (speedY == 2) {
         speedY = 0;
       }
@@ -35,6 +36,12 @@ export default function(state = {}, action) {
       state = {...state,
         x: 0,
         y: 0
+      };
+      break;
+    case 'PLAYER_SET_RATIO':
+      state = {...state,
+        y: action.payload,
+        ratio: action.payload
       };
       break;
   }
