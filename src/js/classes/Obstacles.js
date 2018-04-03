@@ -29,9 +29,9 @@ export default class Obstacles {
       this.obstacles.push(new SnowSmall(y));
     } else if (luckyNumber>0.50) {
       this.obstacles.push(new SnowMedium(y));
-    } else if (luckyNumber>0.33) {
-      this.obstacles.push(new Rock(y));
     } else if (luckyNumber>0.11) {
+      this.obstacles.push(new Rock(y));
+    } else if (luckyNumber>0.01) {
       this.obstacles.push(new SnowBig(y));
     } else {
       this.obstacles.push(new Ramp(y));
@@ -46,7 +46,7 @@ export default class Obstacles {
     this.obstacles.forEach((obstacle,i) => {
       if (obstacle.position.y <= -100) {
         this.obstacles.splice(i, 1);
-        this.add(globals.canvas.height);
+        this.add();
       } else if (obstacle.position.x <= 0){
         this.obstacles.splice(i, 1);
         this.add(obstacle.position.y,globals.canvas.width);

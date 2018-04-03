@@ -6,6 +6,9 @@ export default function(state = {}, action) {
     case 'GAME_OVER':
       state = {...state, ended: action.payload};
       break;
+    case 'PLAYER_JUMP':
+      state = {...state, jumping: action.payload};
+      break;
     case 'UPDATE_SCORE':
       let score = action.payload ? state.score + action.payload : action.payload;
       state = {...state, score: score};
@@ -22,29 +25,31 @@ export default function(state = {}, action) {
       state = {...state, direction: direction};
       break;
     case 'PLAYER_MOUSEMOVE':
-      let mDirection = 5;
+      if (!state.jumping) {
+        let mDirection = 5;
 
-      if (action.payload.x >= 1) {
-        mDirection = 4;
-        if (action.payload.x >= 2) {
-          mDirection = 3;
+        if (action.payload.x >= 1) {
+          mDirection = 4;
+          if (action.payload.x >= 2) {
+            mDirection = 3;
+          }
+        } else if (action.payload.x <= -1) {
+          mDirection = 6;
+          if (action.payload.x <= -2) {
+            mDirection = 7;
+          }
         }
-      } else if (action.payload.x <= -1) {
-        mDirection = 6;
-        if (action.payload.x <= -2) {
-          mDirection = 7;
+
+        if (action.payload.y == 0) {
+          if (action.payload.x == 0) {
+            mDirection = 5;
+          } else {
+            mDirection = (action.payload.x > 0) ? 2 : 8;
+          }
         }
+        state = {...state, direction: mDirection};
       }
 
-      if (action.payload.y == 0) {
-        if (action.payload.x == 0) {
-          mDirection = 5;
-        } else {
-          mDirection = (action.payload.x > 0) ? 2 : 8;
-        }
-      }
-
-      state = {...state, direction: mDirection};
       break;
     case 'PLAYER_HIT':
       state = {

@@ -20,6 +20,9 @@ const keys = {
   KeyF: (ev) => {
     const ratio = (store.getState().speed.ratio === 16) ? 8 : 16;
     store.dispatch({type: 'PLAYER_SET_RATIO', payload: ratio});
+  },
+  Space: (ev) => {
+    store.dispatch({type: 'PLAYER_JUMP', payload: 1});
   }
 }
 
@@ -67,6 +70,7 @@ export default function(game) {
       if (!store.getState().game.started) {
         store.dispatch({type: 'GAME_START', payload: 1});
       } else {
+        store.dispatch({type: 'PLAYER_JUMP', payload: 1});
         if (store.getState().game.over) {
           game.restart();
         }

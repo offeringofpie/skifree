@@ -133,11 +133,13 @@ export default class Player {
     this.globals = globals;
     this.moving = false;
     this.speed = 0;
+    this.jumping = 0;
+    this.gravity = 8;
     this.sprite = sprite;
     this.direction = this.globals.player.direction;
     this.position = {
       x: this.globals.canvas.width/2,
-      y: 100
+      y: 200
     };
     this.hit = 0;
     this.buffer = 0;
@@ -146,10 +148,21 @@ export default class Player {
   /* draw */
   draw() {
     let posX = this.position.x;
-    if (this.sprite[this.direction].name.match(/ouch|getup/)) {
+    if (this.sprite[this.direction].name.match(/ouch|getup|jump/)) {
       posX = this.position.x + this.sprite[this.direction].width/8;
     }
     draw(this.sprite[this.direction],posX,this.position.y);
+  }
+
+  jump(height = 25) {
+    if (this.buffer <= height) {
+      this.position.y = 200 - height*Math.sin(this.buffer*Math.PI/height)-this.gravity;
+      this.buffer++;
+    } else {
+      this.buffer = 0;
+      store.dispatch({type: 'PLAYER_JUMP', payload: 0});
+      store.dispatch({type: 'PLAYER_SPRITE', payload: 5});
+    }
   }
 
   /* update */
@@ -163,7 +176,11 @@ export default class Player {
         store.dispatch({type: 'PLAYER_SPRITE', payload: 15});
         this.buffer = 0;
       }
+    } else if (state.player.jumping) {
+      store.dispatch({type: 'PLAYER_SPRITE', payload: 11});
+      this.jump();
     }
+
     this.direction = state.player.direction;
     this.draw();
   }
