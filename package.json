@@ -11,8 +11,8 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run dev:open && npm run dev:webpack",
-    "dev": "./node_modules/webpack/bin/webpack.js --mode development",
-    "build": "./node_modules/webpack/bin/webpack.js --mode production",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
