@@ -21,7 +21,7 @@ Skifree clone built in Javascript
 * [x] mouse control
 * [x] smoother speed control
 * [x] Press 'F' to pay respects to the monster
-* [ ] jumping
+* [x] jumping
   * [ ] flipping
 
 ## collision
