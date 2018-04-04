@@ -7,7 +7,7 @@ export default function(state = {}, action) {
       state = {...state, ended: action.payload};
       break;
     case 'PLAYER_JUMP':
-      state = {...state, jumping: action.payload};
+      state = {...state, jumping: action.payload.jumping, strength: action.payload.strength};
       break;
     case 'UPDATE_SCORE':
       let score = action.payload ? state.score + action.payload : action.payload;

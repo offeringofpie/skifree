@@ -19,6 +19,13 @@ export default function(state = {}, action) {
         elapsed: action.payload
       }
       break;
+    case 'UPDATE_SCORE':
+      const score = action.payload ? state.score+action.payload : 0;
+      state = {
+        ...state,
+        score: score
+      }
+      break;
     case 'PLAYER_HIT':
       state = {...state,
         over: action.payload

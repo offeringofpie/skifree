@@ -156,11 +156,13 @@ export default class Player {
 
   jump(height = 25) {
     if (this.buffer <= height) {
-      this.position.y = 200 - height*Math.sin(this.buffer*Math.PI/height)-this.gravity;
+      this.position.y = 200 - Math.floor(height*Math.sin(this.buffer*Math.PI/height))-this.gravity;
       this.buffer++;
     } else {
+      console.log(this.position.y);
       this.buffer = 0;
-      store.dispatch({type: 'PLAYER_JUMP', payload: 0});
+      this.position.y = 200;
+      store.dispatch({type: 'PLAYER_JUMP', payload: {jumping:0,strength:0}});
       store.dispatch({type: 'PLAYER_SPRITE', payload: 5});
     }
   }
@@ -178,7 +180,7 @@ export default class Player {
       }
     } else if (state.player.jumping) {
       store.dispatch({type: 'PLAYER_SPRITE', payload: 11});
-      this.jump();
+      this.jump(state.player.strength);
     }
 
     this.direction = state.player.direction;

@@ -59,6 +59,7 @@ export default class Game {
     store.dispatch({type: 'GAME_START', payload: 1});
     store.dispatch({type: 'UPDATE_ELAPSED', payload: 0});
     store.dispatch({type: 'UPDATE_DISTANCE', payload: 0});
+    store.dispatch({type: 'UPDATE_SCORE', payload: 0});
   }
 
   hitTest() {

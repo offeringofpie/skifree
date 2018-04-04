@@ -18,7 +18,8 @@ let globals = {
     elapsed: 0,
     over: 0,
     distance: 0,
-    speed: 0
+    speed: 0,
+    score: 0
   },
   player: {
     direction: 5,

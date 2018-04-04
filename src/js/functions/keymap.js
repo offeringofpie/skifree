@@ -70,9 +70,10 @@ export default function(game) {
       if (!store.getState().game.started) {
         store.dispatch({type: 'GAME_START', payload: 1});
       } else {
-        store.dispatch({type: 'PLAYER_JUMP', payload: 1});
+        store.dispatch({type: 'PLAYER_JUMP', payload: {jumping:1,strength:25}});
         if (store.getState().game.over) {
-          game.restart();
+          store.dispatch({type: 'PLAYER_HIT', payload: 0});
+          store.dispatch({type: 'GAME_START', payload: 1});
         }
       }
     }
