@@ -10,8 +10,8 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "npm run dev:open && npm run dev:webpack",
-    "dev": "webpack --mode development",
+    "start": "npm run dev",
+    "dev": "webpack --mode development --watch",
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
