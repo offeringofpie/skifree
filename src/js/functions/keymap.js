@@ -22,7 +22,7 @@ const keys = {
     store.dispatch({type: 'PLAYER_SET_RATIO', payload: ratio});
   },
   Space: (ev) => {
-    store.dispatch({type: 'PLAYER_JUMP', payload: 1});
+    store.dispatch({type: 'PLAYER_JUMP', payload: {jumping:1,strength:25}});
   }
 }
 

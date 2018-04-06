@@ -33,10 +33,12 @@ export default function(state = {}, action) {
       };
       break;
     case 'PLAYER_HIT':
-      state = {...state,
-        x: 0,
-        y: 0
-      };
+      if (action.payload) {
+        state = {...state,
+          x: 0,
+          y: 0
+        };
+      }
       break;
     case 'PLAYER_SET_RATIO':
       state = {...state,

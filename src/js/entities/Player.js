@@ -156,10 +156,9 @@ export default class Player {
 
   jump(height = 25) {
     if (this.buffer <= height) {
-      this.position.y = 200 - Math.floor(height*Math.sin(this.buffer*Math.PI/height))-this.gravity;
+      this.position.y = 200+this.gravity - Math.floor(height*Math.sin(this.buffer*Math.PI/height))-this.gravity;
       this.buffer++;
     } else {
-      console.log(this.position.y);
       this.buffer = 0;
       this.position.y = 200;
       store.dispatch({type: 'PLAYER_JUMP', payload: {jumping:0,strength:0}});
@@ -170,19 +169,20 @@ export default class Player {
   /* update */
   update(deltaTime) {
     const state = store.getState();
-    if (state.player.hit) {
-      this.hit = state.player.hit;
+    if (state.player.jumping) {
+      store.dispatch({type: 'PLAYER_SPRITE', payload: 11});
+      this.jump(state.player.strength);
+    } else if (state.player.hit) {
       this.buffer++;
 
       if (this.buffer >= 90) {
         store.dispatch({type: 'PLAYER_SPRITE', payload: 15});
         this.buffer = 0;
       }
-    } else if (state.player.jumping) {
-      store.dispatch({type: 'PLAYER_SPRITE', payload: 11});
-      this.jump(state.player.strength);
     }
 
+    this.hit = state.player.hit;
+    this.jumping = state.player.jumping;
     this.direction = state.player.direction;
     this.draw();
   }

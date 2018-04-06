@@ -9,7 +9,7 @@ export default class Scoreboard extends Component {
     super(props);
 
     this.state = {
-      started: 0,
+      elapsed: 0,
       speed: 0,
       distance: 0,
       score: 0
@@ -20,7 +20,7 @@ export default class Scoreboard extends Component {
         elapsed: store.getState().game.elapsed,
         speed: store.getState().speed.y,
         distance: parseInt(store.getState().game.distance),
-        score: store.getState().game.score
+        score: parseInt(store.getState().game.score)
       });
     });
   }

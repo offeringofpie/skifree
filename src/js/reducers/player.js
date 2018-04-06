@@ -52,11 +52,13 @@ export default function(state = {}, action) {
 
       break;
     case 'PLAYER_HIT':
-      state = {
-        ...state,
-        hit: action.payload,
-        direction: 14
-      };
+      if (action.payload) {
+        state = {
+          ...state,
+          hit: action.payload,
+          direction: state.direction === 15 ? 15 : 14
+        };
+      }
       break;
     case 'PLAYER_SPRITE':
       state = {
