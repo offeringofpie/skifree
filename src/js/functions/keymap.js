@@ -23,6 +23,10 @@ const keys = {
   },
   Space: (ev) => {
     store.dispatch({type: 'PLAYER_JUMP', payload: {jumping:1,strength:25}});
+    if (store.getState().game.over) {
+      store.dispatch({type: 'PLAYER_HIT', payload: 0});
+      store.dispatch({type: 'GAME_START', payload: 1});
+    }
   }
 }
 
