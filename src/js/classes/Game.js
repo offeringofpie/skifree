@@ -39,12 +39,12 @@ export default class Game {
       this.obstacles.update(deltaTime);
       this.objects.update(deltaTime);
       this.player.update(deltaTime);
-      this.hitTest();
       this.store = store.getState();
 
       if (this.store.game.started && !this.store.game.over) {
         store.dispatch({type: 'UPDATE_ELAPSED', payload: this.store.game.elapsed+(0.015)});
         store.dispatch({type: 'UPDATE_DISTANCE', payload: this.store.game.distance+this.store.speed.y/60});
+        this.hitTest();
       }
     };
 
@@ -68,7 +68,7 @@ export default class Game {
 
   hitTest() {
     this.obstacles.obstacles.forEach(obstacle => {
-      hitTest(this.player, obstacle);
+      hitTest(this.player, obstacle, this.store);
     });
   }
 

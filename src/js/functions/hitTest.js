@@ -1,6 +1,6 @@
 import {globals, store} from '../globals';
 
-export default function hitTest(player, obstacle) {
+export default function hitTest(player, obstacle, state) {
   const playerBounds = [
     {
       x: player.position.x - player.sprite[player.direction].width/2,
@@ -24,17 +24,16 @@ export default function hitTest(player, obstacle) {
   if ((playerBounds[0].x <= obstaclePos[0].x && playerBounds[1].x >= obstaclePos[0].x) || (playerBounds[1].x >= obstaclePos[0].x && playerBounds[0].x <= obstaclePos[1].x)) {
     if (playerBounds[0].y <= obstaclePos[0].y && (playerBounds[1].y >= obstaclePos[0].y) || (playerBounds[1].y >= obstaclePos[0].y && playerBounds[0].y <= obstaclePos[1].y)) {
       if (player.jumping) {
-        store.dispatch({type: 'UPDATE_SCORE', payload: 0.3});
+        store.dispatch({type: 'UPDATE_SCORE', payload: 0.1*state.speed.ratio});
       } else if (obstacle.sprite[0].name.match(/snow/)) {
         store.dispatch({type: 'PLAYER_JUMP', payload: {jumping: 1, strength: 15}});
       } else if (obstacle.sprite[0].name.match(/ramp/)) {
         store.dispatch({type: 'PLAYER_JUMP', payload: {jumping: 1, strength: 100}});
-      } else if (player.position.y >= 200) {
+      } else if (player.position.y == 200) {
         if (!player.hit) {
-          store.dispatch({type: 'UPDATE_SCORE', payload: -5});
+          store.dispatch({type: 'UPDATE_SCORE', payload: -10});
+          store.dispatch({type: 'PLAYER_HIT', payload: 1});
         }
-        store.dispatch({type: 'PLAYER_HIT', payload: 1});
-
       }
     }
   }
