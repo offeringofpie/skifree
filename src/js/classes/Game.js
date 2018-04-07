@@ -7,6 +7,7 @@ import hitTest from '../functions/hitTest';
 import Player from '../entities/Player';
 import Animate from './Animate';
 import Obstacles from './Obstacles';
+import Objects from './Objects';
 
 export default class Game {
   constructor() {
@@ -17,6 +18,7 @@ export default class Game {
     this.player = new Player();
     this.animate = new Animate(1 / 60);
     this.obstacles = new Obstacles();
+    this.objects = new Objects();
   }
 
   init() {
@@ -35,6 +37,7 @@ export default class Game {
     this.animate.update = (deltaTime) => {
       this.fillArea();
       this.obstacles.update(deltaTime);
+      this.objects.update(deltaTime);
       this.player.update(deltaTime);
       this.hitTest();
       this.store = store.getState();
@@ -47,6 +50,7 @@ export default class Game {
 
     this.animate.start();
     this.obstacles.init();
+    this.objects.init();
     this.hitTest();
   }
 
