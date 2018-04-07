@@ -18,9 +18,9 @@ export default class Scoreboard extends Component {
     store.subscribe(() => {
       this.setState({
         elapsed: store.getState().game.elapsed,
-        speed: store.getState().speed.y,
-        distance: parseInt(store.getState().game.distance),
-        score: parseInt(store.getState().game.score)
+        speed: Math.floor(store.getState().speed.y),
+        distance: Math.floor(store.getState().game.distance),
+        score: Math.floor(store.getState().game.score)
       });
     });
   }
