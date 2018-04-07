@@ -25,8 +25,10 @@ export default function hitTest(player, obstacle) {
     if (playerBounds[0].y <= obstaclePos[0].y && (playerBounds[1].y >= obstaclePos[0].y) || (playerBounds[1].y >= obstaclePos[0].y && playerBounds[0].y <= obstaclePos[1].y)) {
       if (player.jumping) {
         store.dispatch({type: 'UPDATE_SCORE', payload: 0.3});
-      } else if (obstacle.sprite[0].name.match(/ramp|snow/)) {
+      } else if (obstacle.sprite[0].name.match(/snow/)) {
         store.dispatch({type: 'PLAYER_JUMP', payload: {jumping: 1, strength: 15}});
+      } else if (obstacle.sprite[0].name.match(/ramp/)) {
+        store.dispatch({type: 'PLAYER_JUMP', payload: {jumping: 1, strength: 100}});
       } else if (player.position.y >= 200) {
         if (!player.hit) {
           store.dispatch({type: 'UPDATE_SCORE', payload: -5});
