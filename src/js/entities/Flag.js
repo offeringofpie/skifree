@@ -17,13 +17,13 @@ const sprite = [
     name: 'finish-east',
     x: 706,
     y: 137,
-    width: 75,
+    width: 78,
     height: 106
   }, {
     name: 'finish-west',
-    x: 781,
+    x: 784,
     y: 137,
-    width: 75,
+    width: 78,
     height: 106
   }
 ];
