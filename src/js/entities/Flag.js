@@ -3,25 +3,25 @@ import {store} from '../globals';
 const sprite = [
   {
     name: 'green-east',
-    x: 611,
+    x: 608,
     y: 137,
-    width: 75,
-    height: 106
+    width: 44,
+    height: 107
   }, {
     name: 'green-west',
-    x: 686,
+    x: 652,
     y: 137,
-    width: 75,
-    height: 106
+    width: 44,
+    height: 107
   }, {
     name: 'finish-east',
-    x: 761,
+    x: 706,
     y: 137,
     width: 75,
     height: 106
   }, {
     name: 'finish-west',
-    x: 836,
+    x: 781,
     y: 137,
     width: 75,
     height: 106

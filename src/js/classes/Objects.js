@@ -9,8 +9,8 @@ export default class objects {
   }
 
   init() {
-    this.objects.push(new Flag((globals.canvas.width/2) - 75, 200, 0));
-    this.objects.push(new Flag((globals.canvas.width/2) + 75, 200, 1));
+    this.objects.push(new Flag((globals.canvas.width/2) - 75, 200, 1));
+    this.objects.push(new Flag((globals.canvas.width/2) + 75, 200, 0));
   }
 
   add(y = 0) {
