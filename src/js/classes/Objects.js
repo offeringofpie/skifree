@@ -2,6 +2,7 @@ import {globals, store} from '../globals';
 import draw from '../functions/draw';
 
 import Flag from '../entities/Flag';
+import Logo from '../entities/Logo';
 import Message from '../entities/Message';
 
 export default class objects {
@@ -12,6 +13,7 @@ export default class objects {
   init() {
     this.objects.push(new Flag((globals.canvas.width/2) - 75, 200, 1));
     this.objects.push(new Flag((globals.canvas.width/2) + 75, 200, 0));
+    this.objects.push(new Logo(globals.canvas.width - 280, 176));
     this.objects.push(new Message(globals.canvas.width - 100, 176, "Skifree v0.1"));
     this.objects.push(new Message(globals.canvas.width - 100, 188, "Original author: Chris Pirih"));
   }
