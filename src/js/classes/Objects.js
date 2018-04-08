@@ -2,6 +2,7 @@ import {globals, store} from '../globals';
 import draw from '../functions/draw';
 
 import Flag from '../entities/Flag';
+import Message from '../entities/Message';
 
 export default class objects {
   constructor() {
@@ -11,6 +12,8 @@ export default class objects {
   init() {
     this.objects.push(new Flag((globals.canvas.width/2) - 75, 200, 1));
     this.objects.push(new Flag((globals.canvas.width/2) + 75, 200, 0));
+    this.objects.push(new Message(globals.canvas.width - 100, 176, "Skifree v0.1"));
+    this.objects.push(new Message(globals.canvas.width - 100, 188, "Original author: Chris Pirih"));
   }
 
   add(y = 0) {
@@ -34,7 +37,8 @@ export default class objects {
       object.position.y -= state.speed.y;
       const objectX = globals.canvas.width - object.position.x;
       const objectY = object.position.y;
-      draw(object.sprite[object.direction],objectX,objectY);
+      const drawType = (typeof object.text === "undefined") ? "image" : "text";
+      draw(object.sprite[object.direction],objectX,objectY,drawType);
     })
   }
 
