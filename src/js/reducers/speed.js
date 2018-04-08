@@ -7,6 +7,13 @@ export default function(state = {}, action) {
         ratio: 8
       };
       break;
+      case 'GAME_PAUSE':
+        state = {...state,
+          x: 0,
+          y: 8,
+          ratio: 8*action.payload
+        };
+        break;
     case 'PLAYER_MOVE':
       let speedX = Math.min(Math.max(state.x - action.payload, -state.ratio), state.ratio);
       let speedY = Math.min(Math.max(state.ratio - Math.abs(speedX), 0), state.ratio);

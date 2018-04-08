@@ -18,8 +18,14 @@ const keys = {
     store.dispatch({type: 'PLAYER_MOVE', payload: 5});
   },
   KeyF: (ev) => {
+    console.log(ev);
     const ratio = (store.getState().speed.ratio === 16) ? 8 : 16;
     store.dispatch({type: 'PLAYER_SET_RATIO', payload: ratio});
+  },
+  KeyP: (ev) => {
+    const started = store.getState().game.started;
+    store.dispatch({type: 'GAME_PAUSE', payload: !started});
+    store.dispatch({type: 'PLAYER_MOVE', payload: 1*(!started)});
   },
   Space: (ev) => {
     store.dispatch({type: 'PLAYER_JUMP', payload: {jumping:1,strength:25}});

@@ -3,10 +3,17 @@ export default function(state = {}, action) {
     case 'GAME_START':
       state = {
         ...state,
-        started: 1,
+        started: action.payload,
         over: 0
       };
       break;
+      case 'GAME_PAUSE':
+        state = {
+          ...state,
+          started: action.payload,
+          over: 0
+        };
+        break;
     case 'UPDATE_DISTANCE':
       state = {
         ...state,
