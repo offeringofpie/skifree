@@ -1,5 +1,3 @@
-import {store} from '../globals';
-
 export default class Message {
   constructor(x= 0, y = 0, text = "") {
     this.moving = false;
@@ -9,7 +7,7 @@ export default class Message {
     this.direction = 0;
     this.position = {
       x: x,
-      y: y // setting default position below the player sprite
+      y: y
     };
     this.hit = 0;
   }

@@ -117,16 +117,6 @@ const sprite = [
   }
 ];
 
-/**
- * Class Player
- * @constructor
- * @param {object} globals - represents the global object
- * @param {boolean} moving - if the player is moving
- * @param {integer} speed - Player speed
- * @param {object} sprite - Player sprite
- * @param {integer} direction - Player sprite position
- * @param {object} position - Player position in the canvas
- */
 export default class Player {
   /* constructor */
   constructor() {
@@ -145,7 +135,6 @@ export default class Player {
     this.buffer = 0;
   }
 
-  /* draw */
   draw() {
     let posX = this.position.x;
     if (this.sprite[this.direction].name.match(/ouch|getup|jump/)) {
@@ -166,7 +155,6 @@ export default class Player {
     }
   }
 
-  /* update */
   update(deltaTime) {
     const state = store.getState();
     if (state.player.jumping) {

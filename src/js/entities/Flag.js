@@ -1,5 +1,3 @@
-import {store} from '../globals';
-
 const sprite = [
   {
     name: 'green-east',
@@ -36,7 +34,7 @@ export default class Flag {
     this.direction = direction;
     this.position = {
       x: x,
-      y: y // setting default position below the player sprite
+      y: y
     };
     this.hit = 0;
   }
