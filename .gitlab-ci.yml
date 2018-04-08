@@ -2,7 +2,6 @@ image: alpine:latest
 
 pages:
   stage: deploy
-  when: manual
   script:
   - echo 'Nothing to do...'
   artifacts:
