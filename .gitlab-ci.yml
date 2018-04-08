@@ -7,6 +7,6 @@ pages:
   - echo 'Nothing to do...'
   artifacts:
     paths:
-    - public
+    - build
   only:
-  - pages
+  - master
