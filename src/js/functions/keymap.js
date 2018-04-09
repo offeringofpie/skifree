@@ -37,14 +37,14 @@ const keys = {
 }
 
 export default function(game) {
-  window.addEventListener('keydown', ev => {
+  globals.canvas.addEventListener('keydown', ev => {
     const code = ev.code;
     if (keys.hasOwnProperty(code) && !store.getState().game.over) {
       keys[code]();
     }
   });
 
-  window.addEventListener('mousemove', ev => {
+  globals.canvas.addEventListener('mousemove', ev => {
     let speed = {
       x: 0,
       y: 0,
@@ -75,7 +75,7 @@ export default function(game) {
     }
   });
 
-  window.addEventListener('click', ev => {
+  globals.canvas.addEventListener('click', ev => {
     if (!ev.button) {
       if (!store.getState().game.started) {
         store.dispatch({type: 'GAME_START', payload: 1});
