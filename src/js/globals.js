@@ -24,7 +24,8 @@ let globals = {
   player: {
     direction: 5,
     hit: 0,
-    jump: 0
+    jump: 0,
+    flip: 0
   },
   speed: {
     x: 0,

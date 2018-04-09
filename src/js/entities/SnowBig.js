@@ -2,7 +2,7 @@ import Obstacle from './Obstacle';
 
 const sprite = [
   {
-    name: 'snow',
+    name: 'snowBig',
     x: 1002,
     y: 260,
     width: 253,

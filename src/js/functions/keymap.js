@@ -80,7 +80,11 @@ export default function(game) {
       if (!store.getState().game.started) {
         store.dispatch({type: 'GAME_START', payload: 1});
       } else {
-        store.dispatch({type: 'PLAYER_JUMP', payload: {jumping:1,strength:25}});
+        let flip = store.getState().player.flip;
+        if (store.getState().player.jumping) {
+          flip = (store.getState().player.flip > 1) ? 0 : flip+1;
+        }
+        store.dispatch({type: 'PLAYER_JUMP', payload: {jumping:1, strength:25, flip: flip}});
         if (store.getState().game.over) {
           store.dispatch({type: 'PLAYER_HIT', payload: 0});
           store.dispatch({type: 'GAME_START', payload: 1});

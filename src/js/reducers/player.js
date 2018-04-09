@@ -7,7 +7,13 @@ export default function(state = {}, action) {
       state = {...state, ended: action.payload};
       break;
     case 'PLAYER_JUMP':
-      state = {...state, jumping: action.payload.jumping, strength: action.payload.strength};
+      const flip = (typeof action.payload.flip !== 'undefined') ? action.payload.flip : 0;
+      state = {
+        ...state,
+        jumping: action.payload.jumping,
+        strength: action.payload.strength,
+        flip: flip
+      };
       break;
     case 'UPDATE_SCORE':
       let score = action.payload ? state.score + action.payload : action.payload;
@@ -28,12 +34,12 @@ export default function(state = {}, action) {
       if (!state.jumping) {
         let mDirection = 5;
 
-        if (action.payload.x >= 1) {
+        if (action.payload.x >= 0.6) {
           mDirection = 4;
           if (action.payload.x >= 2) {
             mDirection = 3;
           }
-        } else if (action.payload.x <= -1) {
+        } else if (action.payload.x <= -0.6) {
           mDirection = 6;
           if (action.payload.x <= -2) {
             mDirection = 7;

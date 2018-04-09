@@ -13,13 +13,18 @@
     "start": "npm run dev",
     "dev": "webpack --mode development --watch",
     "build": "webpack --mode production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\""
   },
   "keywords": [
     "skifree",
     "js",
     "canvas"
   ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test"
+    }
+  },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.44",
     "@babel/plugin-transform-react-jsx": "^7.0.0-beta.44",
@@ -29,6 +34,7 @@
     "css-loader": "^0.28.7",
     "css-mqpacker": "^6.0.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "husky": "^0.15.0-rc.13",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
     "postcss-cssnext": "^3.0.2",
     "postcss-import": "^11.0.0",
@@ -53,8 +59,7 @@
       ]
     ],
     "plugins": [
-      "@babel/plugin-transform-spread",
-      [
+      "@babel/plugin-transform-spread", [
         "@babel/plugin-transform-react-jsx",
         {
           "pragma": "h"

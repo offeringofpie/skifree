@@ -127,11 +127,13 @@ export default class Player {
     this.gravity = 8;
     this.sprite = sprite;
     this.direction = this.globals.player.direction;
+    this.strangth = 0;
     this.position = {
       x: this.globals.canvas.width/2,
       y: 200
     };
     this.hit = 0;
+    this.flip = 0;
     this.buffer = 0;
   }
 
@@ -150,16 +152,20 @@ export default class Player {
     } else {
       this.buffer = 0;
       this.position.y = 200;
-      store.dispatch({type: 'PLAYER_JUMP', payload: {jumping:0,strength:0}});
+      store.dispatch({type: 'PLAYER_JUMP', payload: {jumping:0,strength:0, flip:0}});
       store.dispatch({type: 'PLAYER_SPRITE', payload: 5});
     }
   }
 
   update(deltaTime) {
     const state = store.getState();
+
     if (state.player.jumping) {
-      store.dispatch({type: 'PLAYER_SPRITE', payload: 11});
-      this.jump(state.player.strength);
+      store.dispatch({type: 'PLAYER_SPRITE', payload: 11+state.player.flip});
+      if (!this.buffer) {
+        this.strength = state.player.strength
+      }
+      this.jump(this.strength);
     } else if (state.player.hit) {
       this.buffer++;
 
@@ -172,6 +178,7 @@ export default class Player {
     this.hit = state.player.hit;
     this.jumping = state.player.jumping;
     this.direction = state.player.direction;
+    this.flip = state.player.flip;
     this.draw();
   }
 
