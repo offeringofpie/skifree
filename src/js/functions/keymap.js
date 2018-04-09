@@ -37,7 +37,7 @@ const keys = {
 }
 
 export default function(game) {
-  globals.canvas.addEventListener('keydown', ev => {
+  window.addEventListener('keydown', ev => {
     const code = ev.code;
     if (keys.hasOwnProperty(code) && !store.getState().game.over) {
       keys[code]();
