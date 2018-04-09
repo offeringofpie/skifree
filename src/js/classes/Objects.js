@@ -13,9 +13,9 @@ export default class objects {
   init() {
     this.objects.push(new Flag((globals.canvas.width/2) - 75, 200, 1));
     this.objects.push(new Flag((globals.canvas.width/2) + 75, 200, 0));
-    this.objects.push(new Logo(globals.canvas.width - 280, 176));
-    this.objects.push(new Message(globals.canvas.width - 100, 176, "Skifree v0.1"));
-    this.objects.push(new Message(globals.canvas.width - 100, 188, "Original author: Chris Pirih"));
+    this.objects.push(new Logo(globals.canvas.width - 455, 150));
+    this.objects.push(new Message(globals.canvas.width - 100, 126, "Skifree v0.1"));
+    this.objects.push(new Message(globals.canvas.width - 100, 138, "Original author: Chris Pirih"));
   }
 
   add(y = 0) {

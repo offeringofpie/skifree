@@ -3,8 +3,8 @@ const sprite = [
     name: 'logo',
     x: 0,
     y: 274,
-    width: 356,
-    height: 110
+    width: 712,
+    height: 220
   }
 ];
 
