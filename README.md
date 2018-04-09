@@ -14,6 +14,8 @@ Skifree clone built in Javascript
 ## sprites
 * [x] player placement
 * [x] obstacle placement
+* [x] Objects placement
+  - [x] Messages
 
 ## movement
 * [x] fps throttle
@@ -34,11 +36,16 @@ Skifree clone built in Javascript
   - [x] Timer
   - [x] speed
   - [x] Distance
-  - [ ] Style
+  - [x] Style
+  - [ ] Pause
+  - [ ] Restart
 * [ ] Game Over Messages
 * [ ] Start Button
+* [ ] Share
 
 ## other
 * [x] canvas setup
+* [ ] West wing
+* [ ] East wing
 * [ ] yeti
 * [ ] extra (rare) obstacles
