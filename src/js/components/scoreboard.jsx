@@ -2,8 +2,6 @@ import {h, Component} from 'preact';
 import {connect} from 'preact-redux';
 import {store} from '../globals';
 
-const stor = store;
-
 export default class Scoreboard extends Component {
   constructor(props) {
     super(props);
@@ -18,9 +16,9 @@ export default class Scoreboard extends Component {
     store.subscribe(() => {
       this.setState({
         elapsed: store.getState().game.elapsed,
-        speed: Math.floor(store.getState().speed.y),
-        distance: Math.floor(store.getState().game.distance),
-        score: Math.floor(store.getState().game.score)
+        speed: store.getState().speed.y,
+        distance: store.getState().game.distance,
+        score: store.getState().game.score
       });
     });
   }
@@ -28,9 +26,9 @@ export default class Scoreboard extends Component {
   render(props, store) {
     return <div className='score'>
       Time: {Math.floor(this.state.elapsed)}s<br/>
-      Dist: {this.state.distance}m<br/>
-      Speed: {this.state.speed}m/s<br/>
-      Style: {this.state.score}<br/>
+      Dist: {Math.floor(this.state.distance)}m<br/>
+      Speed: {Math.floor(this.state.speed)}m/s<br/>
+      Style: {Math.floor(this.state.score)}<br/>
     </div>
   }
 }

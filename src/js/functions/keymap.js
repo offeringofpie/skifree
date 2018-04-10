@@ -15,7 +15,18 @@ const keys = {
     if (!store.getState().game.started) {
       store.dispatch({type: 'GAME_START', payload: 1});
     }
+    if (store.getState().game.over) {
+      store.dispatch({type: 'PLAYER_HIT', payload: 0});
+      store.dispatch({type: 'GAME_START', payload: 1});
+    }
     store.dispatch({type: 'PLAYER_MOVE', payload: 5});
+  },
+  ArrowUp: (ev) => {
+    let flip = store.getState().player.flip;
+    if (store.getState().player.jumping) {
+      flip = (store.getState().player.flip > 1) ? 0 : flip+1;
+      store.dispatch({type: 'PLAYER_JUMP', payload: {jumping:1, strength:25, flip: flip}});
+    }
   },
   KeyF: (ev) => {
     console.log(ev);
