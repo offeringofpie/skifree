@@ -2,12 +2,12 @@ import {globals, store} from '../globals';
 
 const keys = {
   ArrowRight: (ev) => {
-    if (store.getState().game.started) {
+    if (store.getState().game.started && !store.getState().player.jumping) {
       store.dispatch({type: 'PLAYER_MOVE', payload: 1});
     }
   },
   ArrowLeft: (ev) => {
-    if (store.getState().game.started) {
+    if (store.getState().game.started && !store.getState().player.jumping) {
       store.dispatch({type: 'PLAYER_MOVE', payload: -1});
     }
   },
@@ -51,7 +51,7 @@ export default function(game) {
   window.addEventListener('keydown', ev => {
     const code = ev.code;
     if (keys.hasOwnProperty(code) && !store.getState().game.over) {
-      keys[code]();
+      keys[code](ev);
     }
   });
 
