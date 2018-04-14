@@ -49,3 +49,4 @@ Skifree clone built in Javascript
 * [ ] East wing
 * [ ] yeti
 * [ ] extra (rare) obstacles
+* [ ] tests
