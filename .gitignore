@@ -1,6 +1,7 @@
 *
 !build/
 !src/
+**/**/**.js.map
 !.gitignore
 !CHANGELOG.md
 !LICENSE

@@ -24,7 +24,6 @@ export default function(state = {}, action) {
         speedY = state.ratio;
       }
 
-
       state = {
         ...state,
         x: Math.min(Math.max(speedX, -state.ratio/2), state.ratio/2),
