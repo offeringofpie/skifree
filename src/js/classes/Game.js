@@ -44,7 +44,7 @@ export default class Game {
       if (this.store.game.started && !this.store.game.over) {
         store.dispatch({type: 'UPDATE_ELAPSED', payload: this.store.game.elapsed+(0.015)});
         store.dispatch({type: 'UPDATE_DISTANCE', payload: this.store.game.distance+this.store.speed.y/60});
-        this.hitTest();
+        // this.hitTest();
       }
     };
 

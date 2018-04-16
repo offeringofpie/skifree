@@ -25,6 +25,8 @@ export default function(state = {}, action) {
         direction = action.payload;
       } else if (direction < 0) {
         direction = 2;
+      } else if (action.payload > 0 && state.direction === 1) {
+        direction = 3;
       } else if (direction > 10) {
         direction = 8;
       }

@@ -18,26 +18,28 @@ const mock = {
   }
 };
 
-describe('Flag creation', () => {
-  const x = 5;
-  const y = 5;
-  const direction = 2;
-  let LogoParams = new Logo(x,y,direction);
+describe('Logo', () => {
+  describe('logo creation', () => {
+    const x = 5;
+    const y = 5;
+    const direction = 2;
+    let LogoParams = new Logo(x,y,direction);
 
-  test('should return true on empty state', () => {
-    expect(empty).toEqual(mock);
-  });
+    test('should return true on empty state', () => {
+      expect(empty).toEqual(mock);
+    });
 
-  test('should accept options', () => {
-    expect(LogoParams).not.toEqual(empty);
-  });
+    test('should accept options', () => {
+      expect(LogoParams).not.toEqual(empty);
+    });
 
-  test('should accept certain parameters', () => {
-    let mockParams = mock;
-    mockParams.position.x = x;
-    mockParams.position.y = y;
-    mockParams.direction = direction;
+    test('should accept certain parameters', () => {
+      let mockParams = mock;
+      mockParams.position.x = x;
+      mockParams.position.y = y;
+      mockParams.direction = direction;
 
-    expect(LogoParams).toEqual(mockParams);
+      expect(LogoParams).toEqual(mockParams);
+    });
   });
 });

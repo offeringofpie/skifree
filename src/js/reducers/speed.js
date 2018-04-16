@@ -17,8 +17,8 @@ export default function(state = {}, action) {
         };
         break;
     case 'PLAYER_MOVE':
-      let speedX = state.x - action.payload*state.ratio/2;
-      let speedY = state.ratio - Math.abs(state.x*2);
+      let speedX = state.x - action.payload*4/3;
+      let speedY = state.ratio - Math.abs(speedX*6/3);
       if (action.payload == 5) {
         speedX = 0;
         speedY = state.ratio;
@@ -27,8 +27,8 @@ export default function(state = {}, action) {
 
       state = {
         ...state,
-        x: Math.floor(Math.min(Math.max(speedX, -state.ratio/2), state.ratio/2)),
-        y: Math.floor(Math.min(Math.max(speedY, 0), state.ratio))
+        x: Math.min(Math.max(speedX, -state.ratio/2), state.ratio/2),
+        y: Math.min(Math.max(speedY, 0), state.ratio)
       };
       console.log(state);
       break;
