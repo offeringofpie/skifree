@@ -1,8 +1,9 @@
 *
 !build/*
 !src/*
+!src/
 **/**/**.js.map
-**/**/**.ai
+src/*.ai
 !.gitignore
 !CHANGELOG.md
 !LICENSE
