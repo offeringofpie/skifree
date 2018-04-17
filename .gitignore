@@ -1,4 +1,4 @@
-*/*
+*
 !build/*
 !src/*
 src/**/*.js.map
