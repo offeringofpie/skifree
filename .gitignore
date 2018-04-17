@@ -1,7 +1,7 @@
 *
 !build/*
 !src/*
-src/**/*.js.map
+build/**/*.js.map
 src/*.ai
 !.gitignore
 !CHANGELOG.md

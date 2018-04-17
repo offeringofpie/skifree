@@ -5,6 +5,7 @@ import Tree from '../entities/Tree';
 import Rock from '../entities/Rock';
 import Ramp from '../entities/Ramp';
 import Post from '../entities/Post';
+import Cart from '../entities/Cart';
 import SnowSmall from '../entities/SnowSmall';
 import SnowMedium from '../entities/SnowMedium';
 import SnowBig from '../entities/SnowBig';
@@ -34,8 +35,10 @@ export default class Obstacles {
       this.obstacles.push(new Rock(y));
     } else if (luckyNumber>0.05) {
       this.obstacles.push(new Ramp(y));
-    } else {
+    } else if (luckyNumber>0.02) {
       this.obstacles.push(new Post(y));
+    } else {
+      this.obstacles.push(new Cart(y));
     }
   }
 

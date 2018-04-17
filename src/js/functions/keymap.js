@@ -29,7 +29,6 @@ const keys = {
     }
   },
   KeyF: (ev) => {
-    console.log(ev);
     const ratio = (store.getState().speed.ratio === 16) ? 8 : 16;
     store.dispatch({type: 'PLAYER_SET_RATIO', payload: ratio});
   },

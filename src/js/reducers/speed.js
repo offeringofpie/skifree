@@ -23,13 +23,11 @@ export default function(state = {}, action) {
         speedX = 0;
         speedY = state.ratio;
       }
-
       state = {
         ...state,
         x: Math.min(Math.max(speedX, -state.ratio/2), state.ratio/2),
         y: Math.min(Math.max(speedY, 0), state.ratio)
       };
-      console.log(state);
       break;
     case 'PLAYER_MOUSEMOVE':
       let mSpeedX = action.payload.x;
