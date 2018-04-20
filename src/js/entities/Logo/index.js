@@ -9,7 +9,7 @@ const sprite = [
 ];
 
 export default class Logo {
-  constructor(x= 0, y = 0, direction = 0) {
+  constructor(x = 0, y = 0, direction = 0) {
     this.moving = false;
     this.speed = 0;
     this.sprite = sprite;

@@ -1,5 +1,5 @@
 export default class Animate {
-  constructor(deltaTime = 1 / 24) {
+  constructor(deltaTime = 1 / 120) {
     let accumulatedTime = 0;
     let lastTime = 0;
 

@@ -155,6 +155,7 @@ export default class Player {
       store.dispatch({type: 'PLAYER_JUMP', payload: {jumping:0,strength:0, flip:0}});
 
       if (this.direction > 11 && this.direction < 14) {
+        this.buffer = 25;
         store.dispatch({type: 'PLAYER_HIT', payload: 1});
       } else {
         store.dispatch({type: 'PLAYER_SPRITE', payload: 5});

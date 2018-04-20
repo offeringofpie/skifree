@@ -6,9 +6,7 @@ import Rock from '../entities/Rock';
 import Ramp from '../entities/Ramp';
 import Post from '../entities/Post';
 import Cart from '../entities/Cart';
-import SnowSmall from '../entities/SnowSmall';
-import SnowMedium from '../entities/SnowMedium';
-import SnowBig from '../entities/SnowBig';
+import Snow from '../entities/Snow';
 
 export default class Obstacles {
   constructor() {
@@ -25,17 +23,15 @@ export default class Obstacles {
   add(y = 0) {
     const luckyNumber = Math.random();
 
-    if (luckyNumber>0.66) {
+    if (luckyNumber>0.66 && luckyNumber<0.8) {
       this.obstacles.push(new Tree(y));
-    } else if (luckyNumber>0.55) {
-      this.obstacles.push(new SnowSmall(y));
-    } else if (luckyNumber>0.50) {
-      this.obstacles.push(new SnowMedium(y));
-    } else if (luckyNumber>0.22) {
+    } else if (luckyNumber>0.5) {
       this.obstacles.push(new Rock(y));
-    } else if (luckyNumber>0.05) {
+    } else if (luckyNumber>0.3) {
+      this.obstacles.push(new Snow(y));
+    } else if (luckyNumber>0.2) {
       this.obstacles.push(new Ramp(y));
-    } else if (luckyNumber>0.02) {
+    } else if (luckyNumber>0.08) {
       this.obstacles.push(new Post(y));
     } else {
       this.obstacles.push(new Cart(y));
@@ -55,7 +51,6 @@ export default class Obstacles {
         this.obstacles.splice(i, 1);
         this.add(obstacle.position.y,globals.canvas.width);
       }
-
 
       const state = store.getState();
 
