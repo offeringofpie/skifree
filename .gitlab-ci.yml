@@ -9,4 +9,3 @@ pages:
     - build
   only:
   - master
-  when: manual
