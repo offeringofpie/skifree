@@ -23,15 +23,15 @@ export default class Obstacles {
   add(y = 0) {
     const luckyNumber = Math.random();
 
-    if (luckyNumber>0.66 && luckyNumber<0.8) {
+    if (luckyNumber>0.8) {
       this.obstacles.push(new Tree(y));
     } else if (luckyNumber>0.5) {
       this.obstacles.push(new Rock(y));
     } else if (luckyNumber>0.3) {
       this.obstacles.push(new Snow(y));
-    } else if (luckyNumber>0.2) {
+    } else if (luckyNumber>0.1) {
       this.obstacles.push(new Ramp(y));
-    } else if (luckyNumber>0.08) {
+    } else if (luckyNumber>0.05) {
       this.obstacles.push(new Post(y));
     } else {
       this.obstacles.push(new Cart(y));
