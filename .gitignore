@@ -3,6 +3,7 @@
 !src/*
 build/**/*.js.map
 src/*.ai
+!.gitlab-ci.yml
 !.gitignore
 !CHANGELOG.md
 !LICENSE
