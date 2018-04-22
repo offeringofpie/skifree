@@ -8,10 +8,11 @@ const sprite = new Image(512,156);
 sprite.src = './img/player.png';
 
 let globals = {
-  debug: 0,
+  debug: 1,
   canvas: document.querySelector('canvas'),
   context: document.querySelector('canvas').getContext('2d'),
   subject: new Subject(),
+  deltaTime: 1 / 60,
   sprite: sprite,
   game: {
     started: 0,

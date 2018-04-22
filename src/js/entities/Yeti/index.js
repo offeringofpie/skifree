@@ -54,7 +54,7 @@ const sprite = [
 ];
 
 export default class Yeti {
-  constructor(x= 0, y = 0, direction = 0) {
+  constructor(x = 0, y = 0, direction = 0) {
     this.state = store.getState();
     this.globals = globals;
     this.sprite = sprite;

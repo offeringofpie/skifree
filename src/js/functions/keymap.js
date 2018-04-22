@@ -88,6 +88,7 @@ export default function(game) {
   globals.canvas.addEventListener('click', ev => {
     if (!ev.button) {
       if (!store.getState().game.started) {
+        game.animate.start();
         store.dispatch({type: 'GAME_START', payload: 1});
       } else {
         let flip = store.getState().player.flip;
