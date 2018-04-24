@@ -4,13 +4,15 @@ const empty = new Logo();
 const mock = {
   moving: false,
   speed: 0,
-  sprite: [{
-    name: 'logo',
-    x: 0,
-    y: 274,
-    width: 712,
-    height: 220
-  }],
+  sprite: [
+    {
+      name: 'logo',
+      x: 0,
+      y: 274,
+      width: 712,
+      height: 220
+    }
+  ],
   direction: 0,
   position: {
     x: 0,
@@ -23,7 +25,7 @@ describe('Logo', () => {
     const x = 5;
     const y = 5;
     const direction = 2;
-    let LogoParams = new Logo(x,y,direction);
+    let LogoParams = new Logo(x, y, direction);
 
     test('should return true on empty state', () => {
       expect(empty).toEqual(mock);

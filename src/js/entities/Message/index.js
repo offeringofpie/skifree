@@ -1,5 +1,5 @@
 export default class Message {
-  constructor(x= 0, y = 0, text = "") {
+  constructor(x = 0, y = 0, text = '') {
     this.moving = false;
     this.speed = 0;
     this.sprite = [text];

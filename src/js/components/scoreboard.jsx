@@ -1,6 +1,6 @@
-import {h, Component} from 'preact';
-import {connect} from 'preact-redux';
-import {store} from '../globals';
+import { h, Component } from 'preact';
+import { connect } from 'preact-redux';
+import { store } from '../globals';
 
 export default class Scoreboard extends Component {
   constructor(props) {
@@ -24,11 +24,14 @@ export default class Scoreboard extends Component {
   }
 
   render(props, store) {
-    return <div className='score'>
-      Time: {Math.floor(this.state.elapsed)}s<br/>
-      Dist: {Math.floor(this.state.distance)}m<br/>
-      Speed: {Math.floor(this.state.speed)}m/s<br/>
-      Style: {Math.floor(this.state.score)}<br/>
-    </div>
+    return (
+      <div className="score">
+        Time: {Math.floor(this.state.elapsed)}s<br />
+        Dist: {Math.floor(this.state.distance)}m<br />
+        Speed: {Math.floor(this.state.speed)}m/s<br />
+        Style: {Math.floor(this.state.score)}
+        <br />
+      </div>
+    );
   }
 }

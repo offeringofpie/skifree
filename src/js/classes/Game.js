@@ -1,6 +1,6 @@
-import {Observable, Subject} from "rxjs/Observable";
+import { Observable, Subject } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
-import {globals,store} from '../globals';
+import { globals, store } from '../globals';
 import draw from '../functions/draw';
 import input from '../functions/keymap';
 import hitTest from '../functions/hitTest';
@@ -34,14 +34,20 @@ export default class Game {
 
   start() {
     this.player.position.x = globals.canvas.width / 2;
-    store.dispatch({type: 'UPDATE_ELAPSED', payload: 0});
+    store.dispatch({ type: 'UPDATE_ELAPSED', payload: 0 });
 
-    this.animate.update = (deltaTime) => {
+    this.animate.update = deltaTime => {
       this.update(deltaTime);
 
       if (this.store.game.started && !this.store.game.over) {
-        store.dispatch({type: 'UPDATE_ELAPSED', payload: this.store.game.elapsed+(0.015)});
-        store.dispatch({type: 'UPDATE_DISTANCE', payload: this.store.game.distance+this.store.speed.y/60});
+        store.dispatch({
+          type: 'UPDATE_ELAPSED',
+          payload: this.store.game.elapsed + 0.015
+        });
+        store.dispatch({
+          type: 'UPDATE_DISTANCE',
+          payload: this.store.game.distance + this.store.speed.y / 60
+        });
         this.hitTest();
       }
 
@@ -63,10 +69,10 @@ export default class Game {
     this.player.reset();
     this.fillArea();
     this.start();
-    store.dispatch({type: 'GAME_START', payload: 1});
-    store.dispatch({type: 'UPDATE_ELAPSED', payload: 0});
-    store.dispatch({type: 'UPDATE_DISTANCE', payload: 0});
-    store.dispatch({type: 'UPDATE_SCORE', payload: 0});
+    store.dispatch({ type: 'GAME_START', payload: 1 });
+    store.dispatch({ type: 'UPDATE_ELAPSED', payload: 0 });
+    store.dispatch({ type: 'UPDATE_DISTANCE', payload: 0 });
+    store.dispatch({ type: 'UPDATE_SCORE', payload: 0 });
   }
 
   hitTest() {
@@ -82,7 +88,13 @@ export default class Game {
     this.obstacles.update();
   }
 
-  fillArea(color = 'rgba(255,255,255,1)', x = 0, y = 0, width = window.innerWidth, height = window.innerHeight) {
+  fillArea(
+    color = 'rgba(255,255,255,1)',
+    x = 0,
+    y = 0,
+    width = window.innerWidth,
+    height = window.innerHeight
+  ) {
     globals.context.fillStyle = color;
     globals.context.fillRect(x, y, width, height);
   }

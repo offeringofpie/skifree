@@ -3,7 +3,7 @@ export default class Animate {
     let accumulatedTime = 0;
     let lastTime = 0;
 
-    this.updateProxy = (time) => {
+    this.updateProxy = time => {
       accumulatedTime += (time - lastTime) / 1000;
 
       if (accumulatedTime > 1) {
@@ -18,7 +18,7 @@ export default class Animate {
       lastTime = time;
 
       this.start();
-    }
+    };
   }
 
   stop() {

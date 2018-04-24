@@ -7,13 +7,15 @@ const sprite = [
     y: 368,
     width: 63,
     height: 16
-  }, {
+  },
+  {
     name: 'snowMedium',
     x: 901,
     y: 353,
     width: 96,
     height: 32
-  }, {
+  },
+  {
     name: 'snowBig',
     x: 1002,
     y: 260,
@@ -26,6 +28,6 @@ export default class SnowSmall extends Obstacle {
   constructor(...args) {
     super(...args);
     this.sprite = sprite;
-    this.direction = Math.floor(Math.random()*this.sprite.length);
+    this.direction = Math.floor(Math.random() * this.sprite.length);
   }
 }

@@ -1,13 +1,14 @@
 export default function(state = {}, action) {
   switch (action.type) {
     case 'GAME_START':
-      state = {...state, direction: 5, hit: 0};
+      state = { ...state, direction: 5, hit: 0 };
       break;
     case 'GAME_OVER':
-      state = {...state, ended: action.payload};
+      state = { ...state, ended: action.payload };
       break;
     case 'PLAYER_JUMP':
-      const flip = (typeof action.payload.flip !== 'undefined') ? action.payload.flip : 0;
+      const flip =
+        typeof action.payload.flip !== 'undefined' ? action.payload.flip : 0;
       state = {
         ...state,
         jumping: action.payload.jumping,
@@ -16,12 +17,14 @@ export default function(state = {}, action) {
       };
       break;
     case 'UPDATE_SCORE':
-      let score = action.payload ? state.score + action.payload : action.payload;
-      state = {...state, score: score};
+      let score = action.payload
+        ? state.score + action.payload
+        : action.payload;
+      state = { ...state, score: score };
       break;
     case 'PLAYER_MOVE':
       let direction = state.direction + action.payload;
-      if (action.payload == 5){
+      if (action.payload == 5) {
         direction = action.payload;
       } else if (direction < 0) {
         direction = 2;
@@ -30,7 +33,7 @@ export default function(state = {}, action) {
       } else if (direction > 10) {
         direction = 8;
       }
-      state = {...state, direction: direction};
+      state = { ...state, direction: direction };
       break;
     case 'PLAYER_MOUSEMOVE':
       if (!state.jumping) {
@@ -52,10 +55,10 @@ export default function(state = {}, action) {
           if (action.payload.x == 0) {
             mDirection = 5;
           } else {
-            mDirection = (action.payload.x > 0) ? 2 : 8;
+            mDirection = action.payload.x > 0 ? 2 : 8;
           }
         }
-        state = {...state, direction: mDirection};
+        state = { ...state, direction: mDirection };
       }
 
       break;
@@ -74,7 +77,7 @@ export default function(state = {}, action) {
         direction: action.payload
       };
       break;
-    }
+  }
 
   return state;
 }

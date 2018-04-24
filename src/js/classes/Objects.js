@@ -1,4 +1,4 @@
-import {globals, store} from '../globals';
+import { globals, store } from '../globals';
 import draw from '../functions/draw';
 
 import Flag from '../entities/Flag';
@@ -11,11 +11,19 @@ export default class objects {
   }
 
   init() {
-    this.objects.push(new Flag((globals.canvas.width/2) - 75, 200, 1));
-    this.objects.push(new Flag((globals.canvas.width/2) + 75, 200, 0));
+    this.objects.push(new Flag(globals.canvas.width / 2 - 75, 200, 1));
+    this.objects.push(new Flag(globals.canvas.width / 2 + 75, 200, 0));
     this.objects.push(new Logo(globals.canvas.width - 455, 150));
-    this.objects.push(new Message(globals.canvas.width - 100, 126, "Skifree v0.1"));
-    this.objects.push(new Message(globals.canvas.width - 100, 138, "Original author: Chris Pirih"));
+    this.objects.push(
+      new Message(globals.canvas.width - 100, 126, 'Skifree v0.1')
+    );
+    this.objects.push(
+      new Message(
+        globals.canvas.width - 100,
+        138,
+        'Original author: Chris Pirih'
+      )
+    );
   }
 
   add(y = 0) {
@@ -27,7 +35,7 @@ export default class objects {
   }
 
   draw() {
-    this.objects.forEach((object,i) => {
+    this.objects.forEach((object, i) => {
       if (object.position.y <= -100) {
         this.objects.splice(i, 1);
         this.add();
@@ -39,9 +47,9 @@ export default class objects {
       object.position.y -= state.speed.y;
       const objectX = globals.canvas.width - object.position.x;
       const objectY = object.position.y;
-      const drawType = (typeof object.text === "undefined") ? "image" : "text";
-      draw(object.sprite[object.direction],objectX,objectY,drawType);
-    })
+      const drawType = typeof object.text === 'undefined' ? 'image' : 'text';
+      draw(object.sprite[object.direction], objectX, objectY, drawType);
+    });
   }
 
   update() {

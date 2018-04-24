@@ -14,8 +14,10 @@ export default class Obstacles {
   }
 
   init() {
-    const quantity = (globals.canvas.width > 800) ? 20 : 10;
-    for (let o = 0; o<quantity; o++) {
+    const quantity = (globals.canvas.width > 800)
+      ? 20
+      : 10;
+    for (let o = 0; o < quantity; o++) {
       this.add();
     }
   }
@@ -23,15 +25,15 @@ export default class Obstacles {
   add(y = 0) {
     const luckyNumber = Math.random();
 
-    if (luckyNumber>0.8) {
+    if (luckyNumber > 0.8) {
       this.obstacles.push(new Tree(y));
-    } else if (luckyNumber>0.5) {
+    } else if (luckyNumber > 0.5) {
       this.obstacles.push(new Rock(y));
-    } else if (luckyNumber>0.3) {
+    } else if (luckyNumber > 0.3) {
       this.obstacles.push(new Snow(y));
-    } else if (luckyNumber>0.1) {
+    } else if (luckyNumber > 0.1) {
       this.obstacles.push(new Ramp(y));
-    } else if (luckyNumber>0.05) {
+    } else if (luckyNumber > 0.05) {
       this.obstacles.push(new Post(y));
     } else {
       this.obstacles.push(new Cart(y));
@@ -43,13 +45,13 @@ export default class Obstacles {
   }
 
   draw() {
-    this.obstacles.forEach((obstacle,i) => {
+    this.obstacles.forEach((obstacle, i) => {
       if (obstacle.position.y <= -100) {
         this.obstacles.splice(i, 1);
         this.add();
-      } else if (obstacle.position.x <= 0){
+      } else if (obstacle.position.x <= 0) {
         this.obstacles.splice(i, 1);
-        this.add(obstacle.position.y,globals.canvas.width);
+        this.add(obstacle.position.y, globals.canvas.width);
       }
 
       const state = store.getState();
@@ -58,7 +60,7 @@ export default class Obstacles {
       obstacle.position.y -= state.speed.y;
       const obstacleX = globals.canvas.width - obstacle.position.x;
       const obstacleY = obstacle.position.y;
-      draw(obstacle.sprite[obstacle.direction],obstacleX,obstacleY);
+      draw(obstacle.sprite[obstacle.direction], obstacleX, obstacleY);
     })
   }
 

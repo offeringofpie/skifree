@@ -1,10 +1,10 @@
-import {Subject} from 'rxjs/Subject';
-import {combineReducers, createStore} from 'redux';
+import { Subject } from 'rxjs/Subject';
+import { combineReducers, createStore } from 'redux';
 import playerReducer from './reducers/player';
 import speedReducer from './reducers/speed';
 import gameReducer from './reducers/game';
 
-const sprite = new Image(512,156);
+const sprite = new Image(512, 156);
 sprite.src = './img/player.png';
 
 let globals = {
@@ -33,7 +33,7 @@ let globals = {
     y: 0,
     ratio: 8
   }
-}
+};
 
 const reducer = combineReducers({
   player: playerReducer,
@@ -46,4 +46,4 @@ store.subscribe(() => {
   // console.log(store.getState())
 });
 
-export {globals, store};
+export { globals, store };

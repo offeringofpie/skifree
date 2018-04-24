@@ -1,5 +1,5 @@
 import Obstacle from '../Obstacle';
-import {globals} from '../../globals';
+import { globals } from '../../globals';
 
 const sprite = [
   {
@@ -16,6 +16,6 @@ export default class Post extends Obstacle {
     super(...args);
     this.sprite = sprite;
     this.direction = 0;
-    this.position.x = this.globals.canvas.width-500;
+    this.position.x = this.globals.canvas.width - 500;
   }
 }
