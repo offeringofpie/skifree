@@ -3,6 +3,11 @@ Skifree clone built in Javascript
 
 [![And from that day on, I wore this little 'F' key pendant everywhere I went.](https://imgs.xkcd.com/comics/skifree.png)](https://xkcd.com/667/)
 
+# Development start
+Install the required dependencies by typing ```npm install``` or ```yarn```.<br>
+Start the test server by running ```npm start``` or ```yarn start```.<br>
+To make the code production-ready, run ```npm run build``` or ```yarn build```.
+
 
 # TODO
 1. [sprites](#sprites)
