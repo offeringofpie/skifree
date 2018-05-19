@@ -1,14 +1,14 @@
 import { Observable, Subject } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
-import { globals, store } from '../globals';
-import draw from '../functions/draw';
-import input from '../functions/keymap';
-import hitTest from '../functions/hitTest';
-import Player from '../entities/Player';
-import Yeti from '../entities/Yeti';
-import Animate from './Animate';
-import Obstacles from './Obstacles';
-import Objects from './Objects';
+import { globals, store } from '../../globals';
+import draw from '../../functions/draw';
+import input from '../../functions/keymap';
+import hitTest from '../../functions/hitTest';
+import Player from '../../entities/Player';
+import Yeti from '../../entities/Yeti';
+import Animate from '../Animate';
+import Obstacles from '../Obstacles';
+import Objects from '../Objects';
 
 export default class Game {
   constructor() {
@@ -51,14 +51,14 @@ export default class Game {
         this.hitTest();
       }
 
-      // if (this.store.game.elapsed > 1.999 && this.store.game.elapsed <= 2.1) {
-      // }
+      if (this.store.game.elapsed > 1.999 && this.store.game.elapsed <= 2.1 && !this.yeti.summoned) {
+        this.yeti.init();
+      }
     };
 
     this.animate.start();
     this.obstacles.init();
     this.objects.init();
-    this.yeti.init();
     this.update();
     this.hitTest();
   }

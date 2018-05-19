@@ -5,10 +5,11 @@ import speedReducer from './reducers/speed';
 import gameReducer from './reducers/game';
 
 const sprite = new Image(512, 156);
-sprite.src = './img/player.png';
+const spriteSrc = require('../img/player.png');
+sprite.src = spriteSrc;
 
 let globals = {
-  debug: 1,
+  debug: 0,
   canvas: document.querySelector('canvas'),
   context: document.querySelector('canvas').getContext('2d'),
   subject: new Subject(),

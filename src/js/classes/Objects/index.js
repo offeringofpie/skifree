@@ -1,9 +1,9 @@
-import { globals, store } from '../globals';
-import draw from '../functions/draw';
+import { globals, store } from '../../globals';
+import draw from '../../functions/draw';
 
-import Flag from '../entities/Flag';
-import Logo from '../entities/Logo';
-import Message from '../entities/Message';
+import Flag from '../../entities/Flag';
+import Logo from '../../entities/Logo';
+import Message from '../../entities/Message';
 
 export default class objects {
   constructor() {

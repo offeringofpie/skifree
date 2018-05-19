@@ -6,85 +6,97 @@ const sprite = [
     name: 'run1',
     x: 408,
     y: 584,
-    width: 111,
-    height: 165
+    width: 126,
+    height: 165,
+    animation: 1
   },
   {
     name: 'run2',
-    x: 517,
+    x: 534,
     y: 584,
     width: 126,
-    height: 165
+    height: 165,
+    animation: -1
   },
   {
     name: 'catching1',
-    x: 641,
+    x: 660,
     y: 580,
-    width: 100,
-    height: 169
+    width: 126,
+    height: 169,
+    animation: 1
   },
   {
     name: 'catching2',
-    x: 741,
+    x: 786,
     y: 580,
-    width: 117,
-    height: 166
+    width: 126,
+    height: 166,
+    animation: -1
   },
   {
     name: 'catching3',
-    x: 643,
+    x: 752,
     y: 764,
-    width: 117,
-    height: 166
+    width: 126,
+    height: 166,
+    animation: 1
   },
   {
     name: 'catching4',
-    x: 760,
+    x: 878,
     y: 745,
-    width: 100,
-    height: 169
+    width: 126,
+    height: 169,
+    animation: -1
   },
   {
     name: 'eating1',
     x: 0,
     y: 752,
     width: 126,
-    height: 165
+    height: 165,
+    animation: 1
   },
   {
     name: 'eating2',
-    x: 127,
+    x: 126,
     y: 752,
-    width: 114,
-    height: 165
+    width: 126,
+    height: 165,
+    animation: 1
   },
   {
     name: 'eating3',
-    x: 243,
+    x: 252,
     y: 752,
-    width: 114,
-    height: 165
+    width: 126,
+    height: 165,
+    animation: 1
   },
   {
     name: 'eating4',
-    x: 357,
+    x: 378,
     y: 752,
-    width: 91,
-    height: 165
+    width: 126,
+    height: 165,
+    animation: 1
   },
   {
     name: 'toothpick1',
-    x: 451,
-    y: 769,
-    width: 90,
-    height: 165
+    x: 504,
+    y: 752,
+    width: 126,
+    height: 165,
+    animation: 1
   },
   {
     name: 'toothpick2',
-    x: 540,
-    y: 769,
-    width: 103,
-    height: 165
+    x: 626,
+    y: 752,
+    width: 126,
+    height: 165,
+    animation: -1
   }
 ];
 
@@ -99,6 +111,7 @@ export default class Yeti {
       y: y
     };
     this.buffer = 0;
+    this.summoned = 0;
   }
 
   init() {
@@ -115,6 +128,13 @@ export default class Yeti {
 
   update(deltaTime) {
     this.state = store.getState();
+
+    if (this.buffer > 8) {
+      this.direction+= this.sprite[this.direction].animation;
+      this.buffer = 0;
+    }
+
+    this.buffer++;
     this.draw();
   }
 }

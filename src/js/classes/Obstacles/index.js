@@ -1,12 +1,12 @@
-import {globals, store} from '../globals';
-import draw from '../functions/draw';
+import {globals, store} from '../../globals';
+import draw from '../../functions/draw';
 
-import Tree from '../entities/Tree';
-import Rock from '../entities/Rock';
-import Ramp from '../entities/Ramp';
-import Post from '../entities/Post';
-import Cart from '../entities/Cart';
-import Snow from '../entities/Snow';
+import Tree from '../../entities/Tree';
+import Rock from '../../entities/Rock';
+import Ramp from '../../entities/Ramp';
+import Post from '../../entities/Post';
+import Cart from '../../entities/Cart';
+import Snow from '../../entities/Snow';
 
 export default class Obstacles {
   constructor() {

@@ -3,16 +3,18 @@ const webpack = require('webpack');
 const NotifierPlugin = require('webpack-notifier');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
   entry: ['./src/main.js'],
   output: {
-    filename: 'script.min.js',
-    path: path.resolve(__dirname, 'build/dist')
+    filename: 'dist/script.min.js',
+    path: path.resolve(__dirname, 'build')
   },
   resolve: {
-    extensions: ['.js', '.json', '.css']
+    extensions: ['.js', '.json', '.css'],
+    modules: ['node_modules']
   },
   module: {
     rules: [
@@ -35,6 +37,12 @@ module.exports = {
             'postcss-loader'
           ]
         })
+      }, {
+        test: /\.(?:png|jpg|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: "img/[name].[ext]",
+        },
       }
     ]
   },
@@ -45,7 +53,11 @@ module.exports = {
       alwaysNotify: true,
       skipFirstNotification: true
     }),
-    new ExtractTextPlugin('style.min.css'),
+    new HtmlWebpackPlugin({
+      template: __dirname + '/src/index.template.ejs',
+      inject: 'body'
+    }),
+    new ExtractTextPlugin('dist/style.min.css'),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.min\.css$/g,
       cssProcessorOptions: {
@@ -57,5 +69,5 @@ module.exports = {
       }
     })
   ],
-  devtool: 'source-map'
+  performance: { hints: false }
 };

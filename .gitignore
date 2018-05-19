@@ -1,14 +1,13 @@
-*
+/*
 !.gitignore
 !.gitlab-ci.yml
 !CHANGELOG.md
 !LICENSE
 !package.json
-!package-lock.json
 !postcss.config.js
 !README.md
 !webpack.config.js
-!build/*
-!src/*
+!build
+!src
 *.map
 *.ai
