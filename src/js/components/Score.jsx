@@ -2,7 +2,7 @@ import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
 import { store } from '../globals';
 
-export default class Scoreboard extends Component {
+export default class Score extends Component {
   constructor(props) {
     super(props);
 

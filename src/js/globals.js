@@ -10,8 +10,8 @@ sprite.src = spriteSrc;
 
 let globals = {
   debug: 0,
-  canvas: document.querySelector('canvas'),
-  context: document.querySelector('canvas').getContext('2d'),
+  canvas: '',
+  context: '',
   subject: new Subject(),
   deltaTime: 1 / 60,
   sprite: sprite,
