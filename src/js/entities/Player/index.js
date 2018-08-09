@@ -175,6 +175,12 @@ export default class Player {
   update(deltaTime) {
     const state = store.getState();
 
+    store.dispatch({
+      type: 'PLAYER_POSITION',
+      payload: this.position
+    });
+    
+
     if (state.player.jumping) {
       store.dispatch({
         type: 'PLAYER_SPRITE',

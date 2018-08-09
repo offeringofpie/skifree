@@ -134,6 +134,9 @@ export default class Yeti {
       this.buffer = 0;
     }
 
+    this.position.x++;
+    this.position.y++;
+
     this.buffer++;
     this.draw();
   }

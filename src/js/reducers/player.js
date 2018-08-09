@@ -6,6 +6,9 @@ export default function(state = {}, action) {
     case 'GAME_OVER':
       state = { ...state, ended: action.payload };
       break;
+    case 'PLAYER_POSITION':
+      state = { ...state, position: action.payload};
+      break;
     case 'PLAYER_JUMP':
       const flip =
         typeof action.payload.flip !== 'undefined' ? action.payload.flip : 0;
