@@ -11,7 +11,7 @@ module.exports = (env, argv) => {
     entry: ['./src/main.js'],
     output: {
       filename: 'dist/script.min.js',
-      path: path.resolve(__dirname, 'build')
+      path: path.resolve(__dirname, 'docs')
     },
     resolve: {
       extensions: ['.js', '.json', '.css'],
@@ -44,7 +44,7 @@ module.exports = (env, argv) => {
     plugins: [
       new NotifierPlugin({
         title: 'Skifree',
-        contentImage: path.join(__dirname, 'build/img/logo.png'),
+        contentImage: path.join(__dirname, 'docs/img/logo.png'),
         alwaysNotify: true,
         skipFirstNotification: true
       }),
@@ -68,7 +68,7 @@ module.exports = (env, argv) => {
     ],
     performance: { hints: false },
     serve: {
-      contentBase: path.join(__dirname, 'build'),
+      contentBase: path.join(__dirname, 'docs'),
       compress: true,
       host: '0.0.0.0',
       port: 4000,

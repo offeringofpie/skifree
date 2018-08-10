@@ -8,6 +8,7 @@
 !README.md
 !webpack.config.js
 !build
+!docs
 !src
 *.map
 *.ai
