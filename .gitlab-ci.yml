@@ -4,10 +4,9 @@ pages:
   stage: deploy
   script:
   - mkdir public
-  - mv build/* public
+  - mv docs/* public
   artifacts:
     paths:
     - public
   only:
   - master
-  when: manual
