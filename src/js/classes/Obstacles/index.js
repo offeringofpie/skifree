@@ -48,9 +48,7 @@ export default class Obstacles {
         this.obstacles.splice(i, 1);
         console.log(`deleted: ${obstacle.sprite[0].name}`);
         this.add();
-      }
-
-      if (obstacle.position.x <= 0) {
+      }else if (obstacle.position.x <= 0) {
         this.obstacles.splice(i, 1);
         this.add(obstacle.position.y, globals.canvas.width);
       }
