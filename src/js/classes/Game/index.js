@@ -51,8 +51,7 @@ export default class Game {
         this.hitTest();
       }
 
-      if (this.store.game.elapsed > 1.999 && this.store.game.elapsed <= 2.1 && !this.yeti.summoned) {
-        console.log('yes')
+      if (this.store.game.elapsed > 59.999 && this.store.game.elapsed <= 60.1 && !this.yeti.summoned) {
         this.yeti.init();
       }
     };
@@ -96,6 +95,7 @@ export default class Game {
     width = window.innerWidth,
     height = window.innerHeight
   ) {
+    globals.context.clearRect(x, y, width, height);
     globals.context.fillStyle = color;
     globals.context.fillRect(x, y, width, height);
   }

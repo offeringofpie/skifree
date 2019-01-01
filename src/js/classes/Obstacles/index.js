@@ -14,9 +14,7 @@ export default class Obstacles {
   }
 
   init() {
-    const quantity = (globals.canvas.width > 800)
-      ? 15
-      : 10;
+    const quantity = (globals.canvas.width > 800) ? 15 : 10;
     for (let o = 0; o < quantity; o++) {
       this.add();
     }
@@ -46,10 +44,13 @@ export default class Obstacles {
 
   draw() {
     this.obstacles.forEach((obstacle, i) => {
-      if (obstacle.position.y <= -100) {
+      if (obstacle.position.y <= -200) {
         this.obstacles.splice(i, 1);
+        console.log(`deleted: ${obstacle.sprite[0].name}`);
         this.add();
-      } else if (obstacle.position.x <= 0) {
+      }
+
+      if (obstacle.position.x <= 0) {
         this.obstacles.splice(i, 1);
         this.add(obstacle.position.y, globals.canvas.width);
       }
@@ -57,7 +58,7 @@ export default class Obstacles {
       const state = store.getState();
 
       obstacle.position.x -= state.speed.x;
-      obstacle.position.y -= Math.abs(state.speed.y);
+      obstacle.position.y = (obstacle.position.y - state.speed.y/2.5);
       const obstacleX = globals.canvas.width - obstacle.position.x;
       const obstacleY = obstacle.position.y;
       draw(obstacle.sprite[obstacle.direction], obstacleX, obstacleY);

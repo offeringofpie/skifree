@@ -187,7 +187,7 @@ export default class Player {
         payload: 11 + state.player.flip
       });
 
-      globals.context.fillStyle = 'rgba(0,0,0,.2)';
+      globals.context.fillStyle = 'rgba(0,0,0,.1)';
       globals.context.beginPath();
       globals.context.ellipse((this.globals.canvas.width / 2)-30, 200-25, 5, 20, Math.PI / 2, 0, 2 * Math.PI);
       globals.context.fill();
@@ -197,7 +197,7 @@ export default class Player {
       }
       this.jump(this.strength);
     } else if (state.player.hit) {
-      this.buffer++;
+      this.buffer += 1/2.5;
 
       if (this.buffer >= 90) {
         store.dispatch({ type: 'PLAYER_SPRITE', payload: 15 });

@@ -26,9 +26,7 @@ export default function hitTest(player, obstacle, state) {
       if (player.jumping) {
         store.dispatch({type: 'UPDATE_SCORE', payload: 0.1 *state.speed.ratio});
       } else if (obstacle.sprite[0].name.match(/snow+?/)) {
-        const strength = (obstacle.sprite[0].name == "snowBig")
-          ? 5
-          : 15
+        const strength = (obstacle.sprite[0].name == "snowBig") ? 15 : 25;
         store.dispatch({
           type: 'PLAYER_JUMP',
           payload: {
