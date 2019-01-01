@@ -10,11 +10,14 @@ To make the code production-ready, run ```npm run build``` or ```yarn build```.
 
 
 # TODO
-1. [sprites](#sprites)
-2. [movement](#movement)
-3. [collision](#collision)
-4. [ui](#ui)
-5. [other](#other)
+- [Skifree](#skifree)
+- [Development start](#development-start)
+- [TODO](#todo)
+  - [sprites](#sprites)
+  - [movement](#movement)
+  - [collision](#collision)
+  - [UI](#ui)
+  - [other](#other)
 
 ## sprites
 * [x] player placement
@@ -29,7 +32,7 @@ To make the code production-ready, run ```npm run build``` or ```yarn build```.
 * [x] smoother speed control
 * [x] Press 'F' to pay respects to the monster
 * [x] jumping
-  * [ ] flipping
+  * [x] flipping
 
 ## collision
 * [x] hit test
