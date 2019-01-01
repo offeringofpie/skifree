@@ -14,7 +14,7 @@ export default class Obstacles {
   }
 
   init() {
-    const quantity = (globals.canvas.width > 800) ? 15 : 10;
+    const quantity = (globals.canvas.width > 800) ? 20 : 10;
     for (let o = 0; o < quantity; o++) {
       this.add();
     }
@@ -58,7 +58,7 @@ export default class Obstacles {
       const state = store.getState();
 
       obstacle.position.x -= state.speed.x;
-      obstacle.position.y = (obstacle.position.y - state.speed.y/2.5);
+      obstacle.position.y = (obstacle.position.y - state.speed.y/2);
       const obstacleX = globals.canvas.width - obstacle.position.x;
       const obstacleY = obstacle.position.y;
       draw(obstacle.sprite[obstacle.direction], obstacleX, obstacleY);

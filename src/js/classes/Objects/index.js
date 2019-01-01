@@ -36,7 +36,7 @@ export default class objects {
       const state = store.getState();
 
       object.position.x -= state.speed.x;
-      object.position.y -= state.speed.y;
+      object.position.y = (object.position.y - state.speed.y/2);
       const objectX = globals.canvas.width - object.position.x;
       const objectY = object.position.y;
       const drawType = typeof object.text === 'undefined' ? 'image' : 'text';
