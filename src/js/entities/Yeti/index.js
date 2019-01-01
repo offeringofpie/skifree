@@ -115,6 +115,7 @@ export default class Yeti {
   }
 
   init() {
+    this.summoned = 1;
     this.update();
   }
 
@@ -129,15 +130,17 @@ export default class Yeti {
   update(deltaTime) {
     this.state = store.getState();
 
-    if (this.buffer > 8) {
-      this.direction+= this.sprite[this.direction].animation;
-      this.buffer = 0;
+    if (this.summoned) {
+      if (this.buffer > 8) {
+        this.direction+= this.sprite[this.direction].animation;
+        this.buffer = 0;
+      }
+  
+      this.position.x++;
+      this.position.y++;
+  
+      this.buffer++;
+      this.draw();
     }
-
-    this.position.x++;
-    this.position.y++;
-
-    this.buffer++;
-    this.draw();
   }
 }

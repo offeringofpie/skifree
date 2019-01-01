@@ -52,6 +52,7 @@ export default class Game {
       }
 
       if (this.store.game.elapsed > 1.999 && this.store.game.elapsed <= 2.1 && !this.yeti.summoned) {
+        console.log('yes')
         this.yeti.init();
       }
     };
@@ -101,10 +102,13 @@ export default class Game {
 
   update(deltaTime = globals.deltaTime) {
     this.fillArea();
+    if (!this.player.jumping) {this.player.update(deltaTime);}
     this.obstacles.update(deltaTime);
+    if (this.player.jumping) {this.player.update(deltaTime);}
     this.objects.update(deltaTime);
-    this.player.update(deltaTime);
-    this.yeti.update(deltaTime);
     this.store = store.getState();
+    if (this.yeti.summoned) {
+      this.yeti.update(deltaTime);
+    }
   }
 }

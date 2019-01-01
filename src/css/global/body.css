@@ -8,6 +8,6 @@ html {
 
 body {
   overflow: hidden;
-  background-color: var(--color--light);
+  background-color: var(--color--dark-clear);
   font-family: "Monaco", "Consolas", "Lucida Console", monospace;
 }

@@ -14,7 +14,7 @@ export default class Canvas extends Component {
   }
   render() {
     return (
-      <canvas id="canvas" width="300" height="300"></canvas>
+      <canvas id="canvas" width="100%" height="100%"></canvas>
     );
   }
 }
