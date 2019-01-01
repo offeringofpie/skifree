@@ -45,7 +45,7 @@ To make the code production-ready, run ```npm run build``` or ```yarn build```.
   - [x] speed
   - [x] Distance
   - [x] Style
-  - [ ] Pause
+  - [x] Pause
   - [ ] Restart
 * [ ] Game Over Messages
 * [ ] Start Button
