@@ -45,6 +45,12 @@ export default function(state = {}, action) {
         over: action.payload
       };
       break;
+    case 'PLAYER_EATEN':
+      state = {
+        ...state,
+        over: action.payload
+      };
+      break;
   }
 
   return state;

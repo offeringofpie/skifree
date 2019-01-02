@@ -28,7 +28,8 @@ let globals = {
     direction: 5,
     hit: 0,
     jump: 0,
-    flip: 0
+    flip: 0,
+    eaten: 0
   },
   speed: {
     x: 0,

@@ -39,7 +39,7 @@ export default class Game {
     this.animate.update = deltaTime => {
       this.update(deltaTime);
 
-      if (this.store.game.started && !this.store.game.over) {
+      if (this.store.game.started && !this.store.game.over && !this.store.player.eaten) {
         store.dispatch({
           type: 'UPDATE_ELAPSED',
           payload: this.store.game.elapsed + 0.015
@@ -53,12 +53,14 @@ export default class Game {
           payload: this.store.game.center + this.store.speed.x
         });
 
+        if (this.store.game.elapsed > 59.999 && this.store.game.elapsed <= 60.1 && !this.yeti.summoned) {
+          this.yeti.init();
+        }
+
         this.hitTest();
       }
 
-      if (this.store.game.elapsed > 59.999 && this.store.game.elapsed <= 60.1 && !this.yeti.summoned) {
-        this.yeti.init();
-      }
+
     };
 
     this.animate.start();
@@ -107,13 +109,12 @@ export default class Game {
 
   update(deltaTime = globals.deltaTime) {
     this.fillArea();
-    if (!this.player.jumping) {this.player.update(deltaTime);}
+    if (this.yeti.summoned) { this.yeti.update(deltaTime); }
+    if (!this.player.jumping) { this.player.update(deltaTime); }
     this.obstacles.update(deltaTime);
-    if (this.player.jumping) {this.player.update(deltaTime);}
+    if (this.player.jumping) { this.player.update(deltaTime); }
     this.objects.update(deltaTime);
     this.store = store.getState();
-    if (this.yeti.summoned) {
-      this.yeti.update(deltaTime);
-    }
+
   }
 }

@@ -112,6 +112,7 @@ export default class Yeti {
     };
     this.buffer = 0;
     this.summoned = 0;
+    this.eating = 0;
   }
 
   init() {
@@ -119,8 +120,19 @@ export default class Yeti {
     this.update();
   }
 
+  reset() {
+    this.buffer = 0;
+    this.eating = 0;
+    this.summoned = 0;
+    this.position = {
+      x: 0,
+      y: 0
+    };
+  }
+
   eat() {
-    // here be how the player is eaten
+    if (this.direction <= 5) {this.direction = 6;}
+    store.dispatch({type: 'PLAYER_EATEN', payload: 1});
   }
 
   draw() {
@@ -131,14 +143,39 @@ export default class Yeti {
     this.state = store.getState();
 
     if (this.summoned) {
-      if (this.buffer > 8) {
+      if (this.buffer > 16) {
         this.direction+= this.sprite[this.direction].animation;
         this.buffer = 0;
       }
+
+      let speedX = (this.position.x <= this.state.player.position.x) ?
+         (4 - this.state.speed.x + (this.state.game.center/16))/8 :
+        -(4 - this.state.speed.x - (this.state.game.center/16))/8;
+
+      let speedY = (this.position.y <= this.state.player.position.y) ?
+         (10 - this.state.speed.y)/8 :
+        -(10 + this.state.speed.y)/8;
+
+      if (this.position.y >= this.state.player.position.y - 30 &&
+        this.position.y <= this.state.player.position.y + 30 &&
+        this.position.x >= this.state.player.position.x - 30 &&
+        this.position.x <= this.state.player.position.x + 30) {
+          this.eat();
+      } else {
+        this.position.x += speedX;
+        this.position.y += speedY;
   
-      this.position.x++;
-      this.position.y++;
-  
+        if (this.position.x >= this.state.player.position.x - 250) {
+          if (this.direction <= 1) {
+            this.direction = 2;
+          }
+        } else if (this.position.x >= this.state.player.position.x && this.position.x <= this.state.player.position.x + 250) {
+          if (this.direction <= 3) {
+            this.direction = 4;
+          }
+        }
+      }
+
       this.buffer++;
       this.draw();
     }

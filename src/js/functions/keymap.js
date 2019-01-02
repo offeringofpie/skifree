@@ -41,9 +41,13 @@ const keys = {
     store.dispatch({ type: 'PLAYER_MOVE', payload: 1 * !started });
   },
   Space: ev => {
+    let flip = store.getState().player.flip;
+    if (store.getState().player.jumping) {
+      flip = store.getState().player.flip > 1 ? 0 : flip + 1;
+    }
     store.dispatch({
       type: 'PLAYER_JUMP',
-      payload: { jumping: 1, strength: 25 }
+      payload: { jumping: 1, strength: 25, flip: flip }
     });
     if (store.getState().game.over) {
       store.dispatch({ type: 'PLAYER_HIT', payload: 0 });
@@ -104,7 +108,7 @@ export default function(game) {
       if (!store.getState().game.started) {
         game.animate.start();
         store.dispatch({ type: 'GAME_START', payload: 1 });
-      } else {
+      } else if (!store.getState().player.eaten) {
         let flip = store.getState().player.flip;
         if (store.getState().player.jumping) {
           flip = store.getState().player.flip > 1 ? 0 : flip + 1;

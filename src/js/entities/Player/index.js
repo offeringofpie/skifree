@@ -196,7 +196,7 @@ export default class Player {
         this.strength = state.player.strength;
       }
       this.jump(this.strength);
-    } else if (state.player.hit) {
+    } else if (state.player.hit && !state.player.eaten) {
       this.buffer += 1/2.5;
 
       if (this.buffer >= 90) {
@@ -206,14 +206,19 @@ export default class Player {
     }
 
     this.hit = state.player.hit;
+    this.eaten = state.player.eaten;
     this.jumping = state.player.jumping;
     this.direction = state.player.direction;
     this.flip = state.player.flip;
-    this.draw();
+
+    if (!state.player.eaten) {
+      this.draw();
+    }
   }
 
   reset() {
     this.hit = 0;
+    this.eaten = 0;
     this.direction = 5;
     this.draw();
   }
