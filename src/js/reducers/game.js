@@ -20,6 +20,12 @@ export default function(state = {}, action) {
         distance: action.payload
       };
       break;
+    case 'UPDATE_CENTER':
+      state = {
+        ...state,
+        center: action.payload
+      };
+      break;
     case 'UPDATE_ELAPSED':
       state = {
         ...state,

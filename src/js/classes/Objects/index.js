@@ -40,7 +40,7 @@ export default class objects {
       const objectX = globals.canvas.width - object.position.x;
       const objectY = object.position.y;
       const drawType = typeof object.text === 'undefined' ? 'image' : 'text';
-      draw(object.sprite[object.direction], objectX, objectY, drawType);
+      draw(object.sprite[object.direction], objectX, objectY, 0, drawType);
     });
   }
 

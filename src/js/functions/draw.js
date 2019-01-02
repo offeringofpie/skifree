@@ -17,6 +17,7 @@ export default function draw(
   },
   canvasX = 0,
   canvasY = 0,
+  hit = 0,
   type = 'image'
 ) {
   if (type === 'image') {
@@ -38,12 +39,17 @@ export default function draw(
   }
 
   if (globals.debug) {
-    globals.context.strokeStyle = sprite.hit ? 'red' : 'green';
+    globals.context.strokeStyle = hit ? 'red' : 'green';
     globals.context.strokeRect(
       canvasX - sprite.width / 2,
       canvasY - sprite.height / 2,
       sprite.width / 3,
       sprite.height / 3
     );
+    globals.context.strokeStyle = 'rgba(20,20,20,0.1)';
+    globals.context.beginPath();
+    globals.context.moveTo(globals.canvas.width/2 + store.getState().game.center, 0);
+    globals.context.lineTo(globals.canvas.width/2 + store.getState().game.center, globals.canvas.height);
+    globals.context.stroke(); 
   }
 }

@@ -16,5 +16,6 @@ export default class Ramp extends Obstacle {
     super(...args);
     this.sprite = sprite;
     this.direction = 0;
+    this.hit = 0;
   }
 }

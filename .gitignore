@@ -4,6 +4,6 @@ public/*.ts
 public/admin.*
 coreutils*
 .yo-rc.json
-package-lock.json
+*-lock.json
 **/.DS_Store
 **.log

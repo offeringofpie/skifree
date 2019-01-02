@@ -29,5 +29,6 @@ export default class SnowSmall extends Obstacle {
     super(...args);
     this.sprite = sprite;
     this.direction = Math.floor(Math.random() * this.sprite.length);
+    this.hit = 0;
   }
 }

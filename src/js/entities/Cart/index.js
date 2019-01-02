@@ -1,5 +1,5 @@
 import Obstacle from '../Obstacle';
-import { globals } from '../../globals';
+import { store } from '../../globals';
 
 const sprite = [
   {
@@ -28,8 +28,10 @@ const sprite = [
 export default class Cart extends Obstacle {
   constructor(...args) {
     super(...args);
+    this.state = store.getState();
     this.sprite = sprite;
     this.direction = Math.floor(Math.random() * this.sprite.length);
-    this.position.x = this.globals.canvas.width - 500;
+    this.position.x = this.globals.canvas.width/2 - this.state.game.center + 300;
+
   }
 }

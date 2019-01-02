@@ -46,7 +46,6 @@ export default class Obstacles {
     this.obstacles.forEach((obstacle, i) => {
       if (obstacle.position.y <= -200) {
         this.obstacles.splice(i, 1);
-        console.log(`deleted: ${obstacle.sprite[0].name}`);
         this.add();
       }else if (obstacle.position.x <= 0) {
         this.obstacles.splice(i, 1);
@@ -59,7 +58,7 @@ export default class Obstacles {
       obstacle.position.y = (obstacle.position.y - state.speed.y/2);
       const obstacleX = globals.canvas.width - obstacle.position.x;
       const obstacleY = obstacle.position.y;
-      draw(obstacle.sprite[obstacle.direction], obstacleX, obstacleY);
+      draw(obstacle.sprite[obstacle.direction], obstacleX, obstacleY, obstacle.hit);
     })
   }
 

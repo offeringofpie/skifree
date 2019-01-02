@@ -48,6 +48,11 @@ export default class Game {
           type: 'UPDATE_DISTANCE',
           payload: this.store.game.distance + this.store.speed.y / 60
         });
+        store.dispatch({
+          type: 'UPDATE_CENTER',
+          payload: this.store.game.center + this.store.speed.x
+        });
+
         this.hitTest();
       }
 
