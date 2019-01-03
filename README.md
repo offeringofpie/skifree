@@ -1,7 +1,7 @@
 # Skifree
 Skifree clone built in Javascript
 
-[![Try now](https://badgen.net/badge/try/now/pink?icon=chrome](https://offeringofpie.github.io/skifree)
+[![Try now](https://badgen.net/badge/try/now/pink?icon=chrome)](https://offeringofpie.github.io/skifree)
 
 [![And from that day on, I wore this little 'F' key pendant everywhere I went.](https://imgs.xkcd.com/comics/skifree.png)](https://xkcd.com/667/)
 
