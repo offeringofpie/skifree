@@ -1,6 +1,11 @@
-import { Observable, Subject } from 'rxjs/Observable';
+import {
+  Observable
+} from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
-import { globals, store } from '../../globals';
+import {
+  globals,
+  store
+} from '../../globals';
 import draw from '../../functions/draw';
 import input from '../../functions/keymap';
 import hitTest from '../../functions/hitTest';
@@ -18,7 +23,7 @@ export default class Game {
     this.fullHeight = window.innerHeight;
     this.player = new Player();
     this.yeti = new Yeti();
-    this.animate = new Animate(globals.deltaTime);
+    this.animate = new Animate();
     this.obstacles = new Obstacles();
     this.objects = new Objects();
   }
@@ -34,36 +39,47 @@ export default class Game {
 
   start() {
     this.player.position.x = globals.canvas.width / 2;
-    store.dispatch({ type: 'UPDATE_ELAPSED', payload: 0 });
+    store.dispatch({
+      type: 'UPDATE_ELAPSED',
+      payload: 0
+    });
+
+    this.continue();
+
+    this.animate.start(globals.deltaTime);
+  }
+
+  continue () {
 
     this.animate.update = deltaTime => {
-      this.update(deltaTime);
+      this.update();
 
-      if (this.store.game.started && !this.store.game.over && !this.store.player.eaten) {
-        store.dispatch({
-          type: 'UPDATE_ELAPSED',
-          payload: this.store.game.elapsed + 0.015
-        });
-        store.dispatch({
-          type: 'UPDATE_DISTANCE',
-          payload: this.store.game.distance + this.store.speed.y / 60
-        });
-        store.dispatch({
-          type: 'UPDATE_CENTER',
-          payload: this.store.game.center + this.store.speed.x
-        });
+      if (this.store.game.reset) {
+        this.restart();
+      } else {
+        if (this.store.game.started && !this.store.game.over && !this.store.player.eaten) {
+          store.dispatch({
+            type: 'UPDATE_ELAPSED',
+            payload: this.store.game.elapsed + 0.015
+          });
+          store.dispatch({
+            type: 'UPDATE_DISTANCE',
+            payload: this.store.game.distance + this.store.speed.y / 30
+          });
+          store.dispatch({
+            type: 'UPDATE_CENTER',
+            payload: this.store.game.center + this.store.speed.x
+          });
 
-        if (this.store.game.elapsed > 59.999 && this.store.game.elapsed <= 60.1 && !this.yeti.summoned) {
-          this.yeti.init();
+          if (this.store.game.elapsed > 59.999 && this.store.game.elapsed <= 60.1 && !this.yeti.summoned) {
+            this.yeti.init();
+          }
+
+          this.hitTest();
         }
-
-        this.hitTest();
       }
-
-
     };
 
-    this.animate.start();
     this.obstacles.init();
     this.objects.init();
     this.update();
@@ -71,15 +87,32 @@ export default class Game {
   }
 
   restart() {
+    store.dispatch({
+      type: 'GAME_RESET',
+      payload: 0
+    });
+    store.dispatch({
+      type: 'GAME_START',
+      payload: 1
+    });
+    store.dispatch({
+      type: 'UPDATE_ELAPSED',
+      payload: 0
+    });
+    store.dispatch({
+      type: 'UPDATE_DISTANCE',
+      payload: 0
+    });
+    store.dispatch({
+      type: 'UPDATE_SCORE',
+      payload: 0
+    });
+
     this.animate.stop();
     this.obstacles.clear();
     this.player.reset();
     this.fillArea();
-    this.start();
-    store.dispatch({ type: 'GAME_START', payload: 1 });
-    store.dispatch({ type: 'UPDATE_ELAPSED', payload: 0 });
-    store.dispatch({ type: 'UPDATE_DISTANCE', payload: 0 });
-    store.dispatch({ type: 'UPDATE_SCORE', payload: 0 });
+    this.continue();
   }
 
   hitTest() {
@@ -109,10 +142,16 @@ export default class Game {
 
   update(deltaTime = globals.deltaTime) {
     this.fillArea();
-    if (this.yeti.summoned) { this.yeti.update(deltaTime); }
-    if (!this.player.jumping) { this.player.update(deltaTime); }
+    if (this.yeti.summoned) {
+      this.yeti.update(deltaTime);
+    }
+    if (!this.player.jumping) {
+      this.player.update(deltaTime);
+    }
     this.obstacles.update(deltaTime);
-    if (this.player.jumping) { this.player.update(deltaTime); }
+    if (this.player.jumping) {
+      this.player.update(deltaTime);
+    }
     this.objects.update(deltaTime);
     this.store = store.getState();
 

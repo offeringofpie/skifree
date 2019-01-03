@@ -10,7 +10,9 @@ export default class Score extends Component {
       elapsed: 0,
       speed: 0,
       distance: 0,
-      score: 0
+      score: 0,
+      paused: 0,
+      debug: 0
     };
 
     store.subscribe(() => {
@@ -18,9 +20,26 @@ export default class Score extends Component {
         elapsed: store.getState().game.elapsed,
         speed: store.getState().speed.y,
         distance: store.getState().game.distance,
-        score: store.getState().game.score
+        score: store.getState().game.score,
+        paused: store.getState().game.started
       });
     });
+  }
+
+  pause() {
+    const started = store.getState().game.started;
+    store.dispatch({ type: 'GAME_PAUSE', payload: !started });
+    store.dispatch({ type: 'PLAYER_MOVE', payload: 1 * !started });
+  }
+
+  debug() {
+    const debug = store.getState().game.debug;
+    store.dispatch({ type: 'DEBUG_MODE', payload: !debug });
+  }
+
+  reset() {
+    const reset = store.getState().game.reset;
+    store.dispatch({ type: 'GAME_RESET', payload: !reset });
   }
 
   render(props, store) {
@@ -31,6 +50,11 @@ export default class Score extends Component {
         Speed: {Math.floor(this.state.speed)}m/s<br />
         Style: {Math.floor(this.state.score)}
         <br />
+        <button onClick={this.pause}>play/pause (P)</button>
+        <button onClick={this.reset}>reset (R)</button>
+        <label for="debug">
+          <input type="checkbox" id="debug" name="debug" value={this.state.debug} onChange={this.debug} /> debug mode 
+        </label>
       </div>
     );
   }

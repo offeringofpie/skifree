@@ -5,4 +5,14 @@
   position: absolute;
   right: 10px;
   top: 10px;
+
+  & button {
+    background-color: lightgrey;
+    display: block;
+    line-height: 1.5;
+    margin: .5em 0;
+    padding: 3px;
+    text-transform: uppercase;
+    width: 100%;
+  }
 }

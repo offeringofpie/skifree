@@ -154,7 +154,7 @@ export default class Player {
         this.gravity -
         Math.floor(height * Math.sin(this.buffer * Math.PI / height)) -
         this.gravity;
-      this.buffer++;
+      this.buffer += 1.5;
     } else {
       this.buffer = 0;
       this.position.y = 200;

@@ -55,7 +55,7 @@ export default class Obstacles {
       const state = store.getState();
 
       obstacle.position.x -= state.speed.x;
-      obstacle.position.y = (obstacle.position.y - state.speed.y/2);
+      obstacle.position.y = (obstacle.position.y - state.speed.y*1.2);
       const obstacleX = globals.canvas.width - obstacle.position.x;
       const obstacleY = obstacle.position.y;
       draw(obstacle.sprite[obstacle.direction], obstacleX, obstacleY, obstacle.hit);

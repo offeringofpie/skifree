@@ -38,7 +38,7 @@ export default function draw(
     globals.context.fillText(sprite, canvasX, canvasY);
   }
 
-  if (globals.debug) {
+  if (store.getState().game.debug) {
     globals.context.strokeStyle = hit ? 'red' : 'green';
     globals.context.strokeRect(
       canvasX - sprite.width / 2,

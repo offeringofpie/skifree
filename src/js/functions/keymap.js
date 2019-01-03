@@ -40,6 +40,10 @@ const keys = {
     store.dispatch({ type: 'GAME_PAUSE', payload: !started });
     store.dispatch({ type: 'PLAYER_MOVE', payload: 1 * !started });
   },
+  KeyR: ev => {
+    const reset = store.getState().game.reset;
+    store.dispatch({ type: 'GAME_RESET', payload: !reset });
+  },
   Space: ev => {
     let flip = store.getState().player.flip;
     if (store.getState().player.jumping) {
@@ -106,7 +110,6 @@ export default function(game) {
   globals.canvas.addEventListener('click', ev => {
     if (!ev.button) {
       if (!store.getState().game.started) {
-        game.animate.start();
         store.dispatch({ type: 'GAME_START', payload: 1 });
       } else if (!store.getState().player.eaten) {
         let flip = store.getState().player.flip;

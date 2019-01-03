@@ -1,4 +1,3 @@
-import { Subject } from 'rxjs/Subject';
 import { combineReducers, createStore } from 'redux';
 import playerReducer from './reducers/player';
 import speedReducer from './reducers/speed';
@@ -9,11 +8,9 @@ const spriteSrc = require('../img/player.png');
 sprite.src = spriteSrc;
 
 let globals = {
-  debug: 0,
   canvas: '',
   context: '',
-  subject: new Subject(),
-  deltaTime: 1 / 60,
+  deltaTime: 1 / 200,
   sprite: sprite,
   game: {
     started: 0,
@@ -22,7 +19,9 @@ let globals = {
     distance: 0,
     center: 0,
     speed: 0,
-    score: 0
+    score: 0,
+    debug: 0,
+    reset: 0
   },
   player: {
     direction: 5,

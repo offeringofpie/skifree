@@ -14,6 +14,12 @@ export default function(state = {}, action) {
         over: 0
       };
       break;
+    case 'GAME_RESET':
+      state = {
+        ...state,
+        reset: action.payload
+      };
+      break;
     case 'UPDATE_DISTANCE':
       state = {
         ...state,
@@ -49,6 +55,12 @@ export default function(state = {}, action) {
       state = {
         ...state,
         over: action.payload
+      };
+      break;
+    case 'DEBUG_MODE':
+      state = {
+        ...state,
+        debug: action.payload
       };
       break;
   }
