@@ -42,13 +42,13 @@ To make the code production-ready, run ```npm run build``` or ```yarn build```.
 * [x] game reset
 
 ## UI
-* [ ] scoreboard
+* [x] scoreboard
   - [x] Timer
   - [x] speed
   - [x] Distance
   - [x] Style
   - [x] Pause
-  - [ ] Restart
+  - [x] Restart
 * [ ] Game Over Messages
 * [ ] Start Button
 * [ ] Share
