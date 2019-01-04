@@ -1,12 +1,6 @@
-import {
-  Observable
-} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
-import {
-  globals,
-  store
-} from '../../globals';
-import draw from '../../functions/draw';
+import { globals, store } from '../../globals';
 import input from '../../functions/keymap';
 import hitTest from '../../functions/hitTest';
 import Player from '../../entities/Player';
@@ -26,6 +20,7 @@ export default class Game {
     this.animate = new Animate();
     this.obstacles = new Obstacles();
     this.objects = new Objects();
+    this.windowed = 1;
   }
 
   init() {
@@ -53,6 +48,11 @@ export default class Game {
 
     this.animate.update = deltaTime => {
       this.update();
+
+      if (this.windowed !== this.store.game.windowed) {
+        this.resizeCanvas();
+        this.windowed = this.store.game.windowed
+      }
 
       if (this.store.game.reset) {
         this.restart();
@@ -122,8 +122,8 @@ export default class Game {
   }
 
   resizeCanvas(width = window.innerWidth, height = window.innerHeight) {
-    globals.canvas.width = width;
-    globals.canvas.height = height;
+    globals.canvas.width = (this.store.game.windowed) ? Math.min(width, 800) : width;
+    globals.canvas.height = (this.store.game.windowed) ? Math.min(height, 568) : height;
     this.player.update();
     this.obstacles.update();
   }

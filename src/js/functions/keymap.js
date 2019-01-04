@@ -77,7 +77,7 @@ export default function(game) {
 
     speed.x =
       -Math.sin(
-        (ev.clientX - globals.canvas.width / 2) /
+        (ev.layerX - globals.canvas.width / 2) /
           globals.canvas.width *
           100 *
           Math.PI /
@@ -86,15 +86,15 @@ export default function(game) {
     speed.y = Math.floor(Math.abs(Math.cos(speed.x / 4) * speed.ratio));
 
     switch (true) {
-      case ev.clientY <= 100 && ev.clientY >= 0:
+      case ev.layerY <= 100 && ev.layerY >= 0:
         speed.ratio = 0;
         speed.y = 0;
         break;
-      case ev.clientY <= globals.canvas.height * 2 / 4 &&
-        ev.clientY >= globals.canvas.height / 4:
+      case ev.layerY <= globals.canvas.height * 2 / 4 &&
+        ev.layerY >= globals.canvas.height / 4:
         speed.ratio = 2;
         break;
-      case ev.clientY <= globals.canvas.height * 3 / 4 && speed.x !== 0:
+      case ev.layerY <= globals.canvas.height * 3 / 4 && speed.x !== 0:
         speed.ratio = 3;
         break;
       default:

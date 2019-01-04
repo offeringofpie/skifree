@@ -13,10 +13,10 @@ export default function hitTest(player, obstacle, state) {
 
   const obstaclePos = [
     {
-      x: globals.canvas.width - obstacle.position.x - obstacle.sprite[obstacle.direction].width / 2,
+      x: globals.canvas.clientWidth - obstacle.position.x - obstacle.sprite[obstacle.direction].width / 2,
       y: obstacle.position.y - obstacle.sprite[obstacle.direction].height / 2 + obstacle.sprite[obstacle.direction].height / 3
     }, {
-      x: globals.canvas.width - obstacle.position.x - obstacle.sprite[obstacle.direction].width / 2 + obstacle.sprite[obstacle.direction].width / 3,
+      x: globals.canvas.clientWidth - obstacle.position.x - obstacle.sprite[obstacle.direction].width / 2 + obstacle.sprite[obstacle.direction].width / 3,
       y: obstacle.position.y - obstacle.sprite[obstacle.direction].height / 2 + obstacle.sprite[obstacle.direction].height / 3
     }
   ];

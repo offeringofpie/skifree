@@ -10,7 +10,7 @@ sprite.src = spriteSrc;
 let globals = {
   canvas: '',
   context: '',
-  deltaTime: 1 / 200,
+  deltaTime: 1000 / 120,
   sprite: sprite,
   game: {
     started: 0,
@@ -20,6 +20,7 @@ let globals = {
     center: 0,
     speed: 0,
     score: 0,
+    windowed: 1,
     debug: 0,
     reset: 0
   },

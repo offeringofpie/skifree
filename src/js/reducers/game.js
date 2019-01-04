@@ -63,6 +63,12 @@ export default function(state = {}, action) {
         debug: action.payload
       };
       break;
+    case 'WINDOW_MODE':
+      state = {
+        ...state,
+        windowed: action.payload
+      };
+      break;
   }
 
   return state;

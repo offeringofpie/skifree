@@ -12,7 +12,8 @@ export default class Score extends Component {
       distance: 0,
       score: 0,
       paused: 0,
-      debug: 0
+      debug: 0,
+      windowed: 1
     };
 
     store.subscribe(() => {
@@ -21,9 +22,16 @@ export default class Score extends Component {
         speed: store.getState().speed.y,
         distance: store.getState().game.distance,
         score: store.getState().game.score,
-        paused: store.getState().game.started
+        paused: store.getState().game.started,
+        windowed: store.getState().game.windowed
       });
     });
+
+    this.windowed = () => {
+      const windowed = store.getState().game.windowed;
+      this.setState({ windowed: windowed });
+      store.dispatch({ type: 'WINDOW_MODE', payload: !windowed });
+    }
   }
 
   pause() {
@@ -42,6 +50,8 @@ export default class Score extends Component {
     store.dispatch({ type: 'GAME_RESET', payload: !reset });
   }
 
+
+
   render(props, store) {
     return (
       <div className="score">
@@ -53,7 +63,10 @@ export default class Score extends Component {
         <button onClick={this.pause}>play/pause (P)</button>
         <button onClick={this.reset}>reset (R)</button>
         <label for="debug">
-          <input type="checkbox" id="debug" name="debug" value={this.state.debug} onChange={this.debug} /> debug mode 
+          <input type="checkbox" id="debug" name="debug" checked={this.state.debug} onChange={this.debug} /> debug mode 
+        </label>
+        <label for="windowed">
+          <input type="checkbox" id="windowed" name="windowed" checked={this.state.windowed} onCheck={(e, checked) => this.onChange(checked)} onChange={this.windowed} /> windowed mode
         </label>
       </div>
     );

@@ -11,11 +11,11 @@ export default class objects {
   }
 
   init() {
-    this.objects.push(new Flag(globals.canvas.width / 2 - 75, 200, 1));
-    this.objects.push(new Flag(globals.canvas.width / 2 + 75, 200, 0));
-    this.objects.push(new Logo(globals.canvas.width - 455, 150));
-    this.objects.push(new Message(globals.canvas.width - 100, 126, 'Skifree v0.1'));
-    this.objects.push(new Message(globals.canvas.width - 100, 138, 'Original author: Chris Pirih'));
+    this.objects.push(new Flag(-75, 200, 1));
+    this.objects.push(new Flag(75, 200, 0));
+    this.objects.push(new Logo(0, 150));
+    this.objects.push(new Message(350, 126, 'Skifree v0.1'));
+    this.objects.push(new Message(350, 138, 'Original author: Chris Pirih'));
   }
 
   add(y = 0) {
@@ -37,7 +37,7 @@ export default class objects {
 
       object.position.x -= state.speed.x;
       object.position.y = (object.position.y - state.speed.y*1.2);
-      const objectX = globals.canvas.width - object.position.x;
+      const objectX = globals.canvas.clientWidth/2 - object.position.x;
       const objectY = object.position.y;
       const drawType = typeof object.text === 'undefined' ? 'image' : 'text';
       draw(object.sprite[object.direction], objectX, objectY, 0, drawType);

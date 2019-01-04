@@ -71,10 +71,7 @@
     "plugins": [
       "@babel/plugin-transform-spread",
       [
-        "@babel/plugin-transform-react-jsx",
-        {
-          "pragma": "h"
-        }
+        "@babel/plugin-transform-react-jsx", {"pragma": "h"}
       ]
     ]
   },

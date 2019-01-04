@@ -174,6 +174,10 @@ export default class Player {
 
   update(deltaTime) {
     const state = store.getState();
+    this.position = {
+      x: this.globals.canvas.width / 2,
+      y: 200
+    };
 
     store.dispatch({
       type: 'PLAYER_POSITION',

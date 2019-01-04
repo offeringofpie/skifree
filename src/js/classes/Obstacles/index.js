@@ -10,13 +10,15 @@ import Snow from '../../entities/Snow';
 
 export default class Obstacles {
   constructor() {
-    this.obstacles = [];
+    this.obstacles = new Map();
+    this.added = 0;
   }
 
   init() {
-    const quantity = (globals.canvas.width > 800) ? 20 : 10;
+    const quantity = (globals.canvas.clientWidth > 800) ? 25 : 10;
     for (let o = 0; o < quantity; o++) {
       this.add();
+      this.added = quantity;
     }
   }
 
@@ -24,39 +26,41 @@ export default class Obstacles {
     const luckyNumber = Math.random();
 
     if (luckyNumber > 0.8) {
-      this.obstacles.push(new Tree(y));
+      this.obstacles.set('tree'+this.added, new Tree(y,'tree'+this.added));
     } else if (luckyNumber > 0.5) {
-      this.obstacles.push(new Rock(y));
+      this.obstacles.set('rock'+this.added, new Rock(y,'rock'+this.added));
     } else if (luckyNumber > 0.3) {
-      this.obstacles.push(new Snow(y));
-    } else if (luckyNumber > 0.1) {
-      this.obstacles.push(new Ramp(y));
+      this.obstacles.set('snow'+this.added, new Snow(y,'snow'+this.added));
+    } else if (luckyNumber > 0.1 && !this.obstacles.has('ramp')) {
+      this.obstacles.set('ramp'+this.added, new Ramp(y,'ramp'+this.added));
     } else if (luckyNumber > 0.05) {
-      this.obstacles.push(new Post(y));
-    } else {
-      this.obstacles.push(new Cart(y));
+      this.obstacles.set('post'+this.added, new Post(y,'post'+this.added));
+    } else if (!this.obstacles.has('cart')) {
+      this.obstacles.set('cart'+this.added, new Cart(y,'cart'+this.added));
     }
+
+    this.added++;
   }
 
   clear() {
-    this.obstacles = [];
+    this.obstacles.clear();
   }
 
   draw() {
     this.obstacles.forEach((obstacle, i) => {
       if (obstacle.position.y <= -200) {
-        this.obstacles.splice(i, 1);
+        this.obstacles.delete(obstacle.id);
         this.add();
       }else if (obstacle.position.x <= 0) {
-        this.obstacles.splice(i, 1);
-        this.add(obstacle.position.y, globals.canvas.width);
+        this.obstacles.delete(obstacle.id);
+        this.add(obstacle.position.y, globals.canvas.clientWidth);
       }
 
       const state = store.getState();
 
       obstacle.position.x -= state.speed.x;
       obstacle.position.y = (obstacle.position.y - state.speed.y*1.2);
-      const obstacleX = globals.canvas.width - obstacle.position.x;
+      const obstacleX = globals.canvas.clientWidth - obstacle.position.x;
       const obstacleY = obstacle.position.y;
       draw(obstacle.sprite[obstacle.direction], obstacleX, obstacleY, obstacle.hit);
     })
