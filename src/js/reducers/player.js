@@ -75,13 +75,11 @@ export default function(state = {}, action) {
       }
       break;
     case 'PLAYER_EATEN':
-      if (action.payload) {
-        state = {
-          ...state,
-          hit: action.payload,
-          eaten: action.payload
-        };
-      }
+      state = {
+        ...state,
+        hit: action.payload,
+        eaten: action.payload
+      };
       break;
     case 'PLAYER_SPRITE':
       state = {

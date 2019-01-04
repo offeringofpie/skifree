@@ -107,7 +107,7 @@ export default class Yeti {
     this.sprite = sprite;
     this.direction = direction;
     this.position = {
-      x: x,
+      x: this.globals.canvas.width/2 * Math.random(),
       y: y
     };
     this.buffer = 0;
@@ -124,6 +124,7 @@ export default class Yeti {
     this.buffer = 0;
     this.eating = 0;
     this.summoned = 0;
+    this.direction = 0;
     this.position = {
       x: 0,
       y: 0
@@ -149,7 +150,7 @@ export default class Yeti {
       }
 
       let speedX = (this.position.x <= this.state.player.position.x) ?
-         (4 - this.state.speed.x + (this.state.game.center/16))/8 :
+         (6 - this.state.speed.x + (this.state.game.center/16))/8 :
         -(4 - this.state.speed.x - (this.state.game.center/16))/8;
 
       let speedY = (this.position.y <= this.state.player.position.y) ?

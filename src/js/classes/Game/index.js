@@ -71,9 +71,9 @@ export default class Game {
             payload: this.store.game.center + this.store.speed.x
           });
 
-          if (this.store.game.elapsed > 59.999 && this.store.game.elapsed <= 60.1 && !this.yeti.summoned) {
+          // if (this.store.game.elapsed > 59.999 && this.store.game.elapsed <= 60.1 && !this.yeti.summoned) {
             this.yeti.init();
-          }
+          // }
 
           this.hitTest();
         }
@@ -87,30 +87,17 @@ export default class Game {
   }
 
   restart() {
-    store.dispatch({
-      type: 'GAME_RESET',
-      payload: 0
-    });
-    store.dispatch({
-      type: 'GAME_START',
-      payload: 1
-    });
-    store.dispatch({
-      type: 'UPDATE_ELAPSED',
-      payload: 0
-    });
-    store.dispatch({
-      type: 'UPDATE_DISTANCE',
-      payload: 0
-    });
-    store.dispatch({
-      type: 'UPDATE_SCORE',
-      payload: 0
-    });
+    store.dispatch({type: 'GAME_RESET',payload: 0});
+    store.dispatch({type: 'GAME_START',payload: 1});
+    store.dispatch({type: 'UPDATE_ELAPSED',payload: 0});
+    store.dispatch({type: 'UPDATE_DISTANCE',payload: 0});
+    store.dispatch({type: 'UPDATE_SCORE',payload: 0});
+    store.dispatch({type: 'PLAYER_EATEN', payload: 0});
 
     this.animate.stop();
     this.obstacles.clear();
     this.player.reset();
+    this.yeti.reset();
     this.fillArea();
     this.continue();
   }
