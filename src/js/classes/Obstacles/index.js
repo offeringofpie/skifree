@@ -15,12 +15,19 @@ export default class Obstacles {
   }
 
   init() {
-    const quantity = (globals.canvas.clientWidth > 800) ? 25 : 10;
-    for (let o = 0; o < quantity; o++) {
-      this.add();
+    this.count();
+  }
+
+  count() {
+    const quantity = (globals.canvas.clientWidth > 800) ? 25 : 15;
+    if (this.added < quantity) {
+      for (let o = this.added; o < quantity; o++) {
+        this.add();
+      }
       this.added = quantity;
     }
   }
+
 
   add(y = 0) {
     const luckyNumber = Math.random();
@@ -67,6 +74,7 @@ export default class Obstacles {
   }
 
   update() {
+    this.count();
     this.draw();
   }
 }
