@@ -27,7 +27,7 @@ export default class Canvas extends Component {
     let game = new Game();
     game.init();
 
-    if (self == top && store.getState().game.windowed) {
+    if (window!==window.top && store.getState().game.windowed) {
       this.setState({
         windowed: true
       });

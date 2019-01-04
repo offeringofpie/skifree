@@ -50,6 +50,11 @@ export default class Score extends Component {
     store.dispatch({ type: 'GAME_RESET', payload: !reset });
   }
 
+  componentDidMount() {
+    if(window !== window.top && store.getState().game.windowed) {
+      this.windowed();
+    }
+  }
 
 
   render(props, store) {
