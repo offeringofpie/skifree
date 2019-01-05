@@ -11,8 +11,8 @@ export default class objects {
   }
 
   init() {
-    this.objects.push(new Flag(-75, 200, 1));
-    this.objects.push(new Flag(75, 200, 0));
+    this.objects.push(new Flag(-85, 200, 1));
+    this.objects.push(new Flag(60, 200, 0));
     this.objects.push(new Logo(0, 150));
     this.objects.push(new Message(350, 126, 'Skifree v0.1'));
     this.objects.push(new Message(350, 138, 'Original author: Chris Pirih'));

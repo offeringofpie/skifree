@@ -144,29 +144,31 @@ export default class Yeti {
     this.state = store.getState();
 
     if (this.summoned) {
+      let animationSpeed = this.eating ? 2 : 1;
+
       if (this.buffer > 16) {
         this.direction+= this.sprite[this.direction].animation;
         this.buffer = 0;
       }
 
       let speedX = (this.position.x <= this.state.player.position.x) ?
-         (6 - this.state.speed.x + (this.state.game.center/16))/8 :
-        -(4 - this.state.speed.x - (this.state.game.center/16))/8;
+         (6 - this.state.speed.x)/8 :
+        -(4 - this.state.speed.x)/8;
 
       let speedY = (this.position.y <= this.state.player.position.y) ?
          (10 - this.state.speed.y)/8 :
         -(10 + this.state.speed.y)/8;
 
-      if (this.position.y >= this.state.player.position.y - 30 &&
-        this.position.y <= this.state.player.position.y + 30 &&
-        this.position.x >= this.state.player.position.x - 30 &&
-        this.position.x <= this.state.player.position.x + 30) {
+      if (this.position.y >= this.state.player.position.y - 10 &&
+        this.position.y <= this.state.player.position.y + 10 &&
+        this.position.x >= this.state.player.position.x - 10 &&
+        this.position.x <= this.state.player.position.x + 10) {
           this.eat();
       } else {
         this.position.x += speedX;
         this.position.y += speedY;
   
-        if (this.position.x >= this.state.player.position.x - 250) {
+        if (this.position.x >= this.state.player.position.x - 150) {
           if (this.direction <= 1) {
             this.direction = 2;
           }
@@ -176,8 +178,8 @@ export default class Yeti {
           }
         }
       }
-
-      this.buffer++;
+      this.eating = this.state.player.eaten;
+      this.buffer += animationSpeed;
       this.draw();
     }
   }

@@ -131,7 +131,7 @@ export default class Player {
     this.direction = this.globals.player.direction;
     this.strangth = 0;
     this.position = {
-      x: this.globals.canvas.width / 2,
+      x: this.globals.canvas.width / 2 - 20,
       y: 200
     };
     this.hit = 0;
@@ -175,10 +175,9 @@ export default class Player {
   update(deltaTime) {
     const state = store.getState();
     this.position = {
-      x: this.globals.canvas.width / 2,
+      x: this.globals.canvas.width / 2 + 20,
       y: 200
     };
-
     store.dispatch({
       type: 'PLAYER_POSITION',
       payload: this.position
