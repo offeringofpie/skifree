@@ -192,7 +192,7 @@ export default class Player {
 
       globals.context.fillStyle = 'rgba(0,0,0,.1)';
       globals.context.beginPath();
-      globals.context.ellipse((this.globals.canvas.width / 2)-30, 200-25, 5, 20, Math.PI / 2, 0, 2 * Math.PI);
+      globals.context.ellipse((this.globals.canvas.width / 2) - 10, 200-25, 5, 20, Math.PI / 2, 0, 2 * Math.PI);
       globals.context.fill();
 
       if (!this.buffer) {
