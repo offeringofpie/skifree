@@ -43,7 +43,7 @@ export default function hitTest(player, obstacle, state) {
           }
         });
       } else if (player.position.y == 200) {
-        if (!player.hit) {
+        if (!player.hit && obstacle.hit) {
           store.dispatch({type: 'UPDATE_SCORE', payload: -10});
           store.dispatch({type: 'PLAYER_HIT', payload: 1});
         }

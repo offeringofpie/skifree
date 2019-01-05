@@ -32,6 +32,6 @@ export default class Cart extends Obstacle {
     this.sprite = sprite;
     this.direction = Math.floor(Math.random() * this.sprite.length);
     this.position.x = this.globals.canvas.width/2 - this.state.game.center + 300;
-
+    this.hit = 0;
   }
 }

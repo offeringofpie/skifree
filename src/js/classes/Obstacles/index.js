@@ -20,6 +20,7 @@ export default class Obstacles {
 
   count() {
     const quantity = (globals.canvas.clientWidth > 800) ? 25 : 15;
+
     if (this.added < quantity) {
       for (let o = this.added; o < quantity; o++) {
         this.add();
@@ -44,6 +45,7 @@ export default class Obstacles {
       this.obstacles.set('post'+this.added, new Post(y,'post'+this.added));
     } else if (!this.obstacles.has('cart')) {
       this.obstacles.set('cart'+this.added, new Cart(y,'cart'+this.added));
+      console.log(this.obstacles.get('cart'+this.added).hit)
     }
 
     this.added++;
@@ -51,6 +53,8 @@ export default class Obstacles {
 
   clear() {
     this.obstacles.clear();
+    this.added = 0;
+    this.count();
   }
 
   draw() {

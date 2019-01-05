@@ -71,9 +71,9 @@ export default class Game {
             payload: this.store.game.center + this.store.speed.x
           });
 
-          // if (this.store.game.elapsed > 59.999 && this.store.game.elapsed <= 60.1 && !this.yeti.summoned) {
+          if (this.store.game.elapsed > 59.999 && this.store.game.elapsed <= 60.1 && !this.yeti.summoned) {
             this.yeti.init();
-          // }
+          }
 
           this.hitTest();
         }
